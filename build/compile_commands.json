@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/Users/christinaharalampopoulos/task-queue/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/include -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/hello.dir/hello_world.cpp.o -c /Users/christinaharalampopoulos/task-queue/hello_world.cpp",
+  "file": "/Users/christinaharalampopoulos/task-queue/hello_world.cpp",
+  "output": "CMakeFiles/hello.dir/hello_world.cpp.o"
+}
+]
