@@ -4,7 +4,7 @@ project(RedisTaskQueue)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Tell the compiler where your .h files are
+# Tell compiler where .h files are
 include_directories(include)
 include_directories(/usr/local/include)
 
@@ -13,11 +13,12 @@ find_library(REDIS_PLUS_LIB redis++)
 find_library(HIREDIS_LIB hiredis)
 
 # --- THE SHARED TOOLBOX ---
-# This bundles your RedisHandler logic so everyone can use it
+# Bundle RedisHandler logic so everyone can use it
 add_library(task_lib src/RedisHandler.cpp)
+target_link_libraries(task_lib PRIVATE ${REDIS_PLUS_LIB} ${HIREDIS_LIB} pthread)
 
 # --- THE EXECUTABLES ---
-# We link them to "task_lib" instead of the raw .cpp file
+# Link to "task_lib" instead of raw .cpp file
 add_executable(hello src/hello_world.cpp)
 target_link_libraries(hello PRIVATE task_lib ${REDIS_PLUS_LIB} ${HIREDIS_LIB} pthread)
 

@@ -228,6 +228,9 @@ RedisTaskQueue_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 RedisTaskQueue_SOURCE_DIR:STATIC=/Users/christinaharalampopoulos/task-queue
 
+//Dependencies for the target
+task_lib_LIB_DEPENDS:STATIC=general;/usr/local/lib/libredis++.dylib;general;/usr/local/lib/libhiredis.dylib;general;pthread;
+
 
 ########################
 # INTERNAL cache entries
