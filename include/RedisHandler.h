@@ -1,6 +1,3 @@
-#ifndef REDIS_HANDLER_H
-#define REDIS_HANDLER_H
-
 #include <memory>
 #include <string>
 #include <queue>
@@ -16,5 +13,3 @@ public:
 private:
     std::unique_ptr<sw::redis::Redis> _redis;
 };
-
-#endif

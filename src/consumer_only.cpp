@@ -1,4 +1,7 @@
 #include "RedisHandler.h"
+#include <string_view>
+#include "json.h"
+#include "task.h"
 
 using namespace std;
 using namespace sw::redis;
@@ -12,11 +15,16 @@ int main() {
         // brpop returns an Optional<pair<string, string>> 
         // because it returns {list_name, value}
         optional<string> result = redis_handler.pop_task(queue);
+        string_view sv = *result;
 
-        if (result == "SHUTDOWN") {
-            cout << "Worker shutting down..." << endl;
+        if (nlohmann::json::accept(sv)) {
+            nlohmann::json j = nlohmann::json::parse(sv);
+            Task task(j);
+            cout << "Task id = " << task.id << ", type = " << task.type << endl;
+        }
+        else {
+            cout << "Invalid JSON" << endl;
             break;
         }
-        cout << "Processing: " << result.value_or("No task acquired") << endl;
     }
 }
