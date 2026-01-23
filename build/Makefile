@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named task_lib
+
+# Build rule for target.
+task_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 task_lib
+.PHONY : task_lib
+
+# fast build rule for target.
+task_lib/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_lib.dir/build.make CMakeFiles/task_lib.dir/build
+.PHONY : task_lib/fast
+
+#=============================================================================
 # Target rules for targets named hello
 
 # Build rule for target.
@@ -129,29 +142,127 @@ hello/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/build
 .PHONY : hello/fast
 
-hello_world.o: hello_world.cpp.o
-.PHONY : hello_world.o
+#=============================================================================
+# Target rules for targets named producer
+
+# Build rule for target.
+producer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 producer
+.PHONY : producer
+
+# fast build rule for target.
+producer/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/producer.dir/build.make CMakeFiles/producer.dir/build
+.PHONY : producer/fast
+
+#=============================================================================
+# Target rules for targets named consumer
+
+# Build rule for target.
+consumer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 consumer
+.PHONY : consumer
+
+# fast build rule for target.
+consumer/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/consumer.dir/build.make CMakeFiles/consumer.dir/build
+.PHONY : consumer/fast
+
+src/RedisHandler.o: src/RedisHandler.cpp.o
+.PHONY : src/RedisHandler.o
 
 # target to build an object file
-hello_world.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/hello_world.cpp.o
-.PHONY : hello_world.cpp.o
+src/RedisHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_lib.dir/build.make CMakeFiles/task_lib.dir/src/RedisHandler.cpp.o
+.PHONY : src/RedisHandler.cpp.o
 
-hello_world.i: hello_world.cpp.i
-.PHONY : hello_world.i
+src/RedisHandler.i: src/RedisHandler.cpp.i
+.PHONY : src/RedisHandler.i
 
 # target to preprocess a source file
-hello_world.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/hello_world.cpp.i
-.PHONY : hello_world.cpp.i
+src/RedisHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_lib.dir/build.make CMakeFiles/task_lib.dir/src/RedisHandler.cpp.i
+.PHONY : src/RedisHandler.cpp.i
 
-hello_world.s: hello_world.cpp.s
-.PHONY : hello_world.s
+src/RedisHandler.s: src/RedisHandler.cpp.s
+.PHONY : src/RedisHandler.s
 
 # target to generate assembly for a file
-hello_world.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/hello_world.cpp.s
-.PHONY : hello_world.cpp.s
+src/RedisHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_lib.dir/build.make CMakeFiles/task_lib.dir/src/RedisHandler.cpp.s
+.PHONY : src/RedisHandler.cpp.s
+
+src/consumer_only.o: src/consumer_only.cpp.o
+.PHONY : src/consumer_only.o
+
+# target to build an object file
+src/consumer_only.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/consumer.dir/build.make CMakeFiles/consumer.dir/src/consumer_only.cpp.o
+.PHONY : src/consumer_only.cpp.o
+
+src/consumer_only.i: src/consumer_only.cpp.i
+.PHONY : src/consumer_only.i
+
+# target to preprocess a source file
+src/consumer_only.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/consumer.dir/build.make CMakeFiles/consumer.dir/src/consumer_only.cpp.i
+.PHONY : src/consumer_only.cpp.i
+
+src/consumer_only.s: src/consumer_only.cpp.s
+.PHONY : src/consumer_only.s
+
+# target to generate assembly for a file
+src/consumer_only.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/consumer.dir/build.make CMakeFiles/consumer.dir/src/consumer_only.cpp.s
+.PHONY : src/consumer_only.cpp.s
+
+src/hello_world.o: src/hello_world.cpp.o
+.PHONY : src/hello_world.o
+
+# target to build an object file
+src/hello_world.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/hello_world.cpp.o
+.PHONY : src/hello_world.cpp.o
+
+src/hello_world.i: src/hello_world.cpp.i
+.PHONY : src/hello_world.i
+
+# target to preprocess a source file
+src/hello_world.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/hello_world.cpp.i
+.PHONY : src/hello_world.cpp.i
+
+src/hello_world.s: src/hello_world.cpp.s
+.PHONY : src/hello_world.s
+
+# target to generate assembly for a file
+src/hello_world.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/hello_world.cpp.s
+.PHONY : src/hello_world.cpp.s
+
+src/producer_only.o: src/producer_only.cpp.o
+.PHONY : src/producer_only.o
+
+# target to build an object file
+src/producer_only.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/producer.dir/build.make CMakeFiles/producer.dir/src/producer_only.cpp.o
+.PHONY : src/producer_only.cpp.o
+
+src/producer_only.i: src/producer_only.cpp.i
+.PHONY : src/producer_only.i
+
+# target to preprocess a source file
+src/producer_only.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/producer.dir/build.make CMakeFiles/producer.dir/src/producer_only.cpp.i
+.PHONY : src/producer_only.cpp.i
+
+src/producer_only.s: src/producer_only.cpp.s
+.PHONY : src/producer_only.s
+
+# target to generate assembly for a file
+src/producer_only.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/producer.dir/build.make CMakeFiles/producer.dir/src/producer_only.cpp.s
+.PHONY : src/producer_only.cpp.s
 
 # Help Target
 help:
@@ -161,10 +272,22 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... consumer"
 	@echo "... hello"
-	@echo "... hello_world.o"
-	@echo "... hello_world.i"
-	@echo "... hello_world.s"
+	@echo "... producer"
+	@echo "... task_lib"
+	@echo "... src/RedisHandler.o"
+	@echo "... src/RedisHandler.i"
+	@echo "... src/RedisHandler.s"
+	@echo "... src/consumer_only.o"
+	@echo "... src/consumer_only.i"
+	@echo "... src/consumer_only.s"
+	@echo "... src/hello_world.o"
+	@echo "... src/hello_world.i"
+	@echo "... src/hello_world.s"
+	@echo "... src/producer_only.o"
+	@echo "... src/producer_only.i"
+	@echo "... src/producer_only.s"
 .PHONY : help
 
 

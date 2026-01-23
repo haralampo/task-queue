@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/christinaharalampopoulos/task-queue/hello_world.cpp" "CMakeFiles/hello.dir/hello_world.cpp.o" "gcc" "CMakeFiles/hello.dir/hello_world.cpp.o.d"
+  "/Users/christinaharalampopoulos/task-queue/src/hello_world.cpp" "CMakeFiles/hello.dir/src/hello_world.cpp.o" "gcc" "CMakeFiles/hello.dir/src/hello_world.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

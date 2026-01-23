@@ -1,3 +1,6 @@
+/Users/christinaharalampopoulos/task-queue/build/CMakeFiles/task_lib.dir
 /Users/christinaharalampopoulos/task-queue/build/CMakeFiles/hello.dir
+/Users/christinaharalampopoulos/task-queue/build/CMakeFiles/producer.dir
+/Users/christinaharalampopoulos/task-queue/build/CMakeFiles/consumer.dir
 /Users/christinaharalampopoulos/task-queue/build/CMakeFiles/edit_cache.dir
 /Users/christinaharalampopoulos/task-queue/build/CMakeFiles/rebuild_cache.dir

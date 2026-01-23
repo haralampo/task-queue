@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/christinaharalampopoulos/task-queue/task_queue.cpp" "CMakeFiles/queue.dir/task_queue.cpp.o" "gcc" "CMakeFiles/queue.dir/task_queue.cpp.o.d"
+  "/Users/christinaharalampopoulos/task-queue/src/task_queue.cpp" "CMakeFiles/queue.dir/src/task_queue.cpp.o" "gcc" "CMakeFiles/queue.dir/src/task_queue.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

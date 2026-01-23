@@ -1,8 +1,26 @@
 [
 {
   "directory": "/Users/christinaharalampopoulos/task-queue/build",
-  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/include -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/hello.dir/hello_world.cpp.o -c /Users/christinaharalampopoulos/task-queue/hello_world.cpp",
-  "file": "/Users/christinaharalampopoulos/task-queue/hello_world.cpp",
-  "output": "CMakeFiles/hello.dir/hello_world.cpp.o"
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/christinaharalampopoulos/task-queue/include -I/usr/local/include -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/task_lib.dir/src/RedisHandler.cpp.o -c /Users/christinaharalampopoulos/task-queue/src/RedisHandler.cpp",
+  "file": "/Users/christinaharalampopoulos/task-queue/src/RedisHandler.cpp",
+  "output": "CMakeFiles/task_lib.dir/src/RedisHandler.cpp.o"
+},
+{
+  "directory": "/Users/christinaharalampopoulos/task-queue/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/christinaharalampopoulos/task-queue/include -I/usr/local/include -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/hello.dir/src/hello_world.cpp.o -c /Users/christinaharalampopoulos/task-queue/src/hello_world.cpp",
+  "file": "/Users/christinaharalampopoulos/task-queue/src/hello_world.cpp",
+  "output": "CMakeFiles/hello.dir/src/hello_world.cpp.o"
+},
+{
+  "directory": "/Users/christinaharalampopoulos/task-queue/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/christinaharalampopoulos/task-queue/include -I/usr/local/include -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/producer.dir/src/producer_only.cpp.o -c /Users/christinaharalampopoulos/task-queue/src/producer_only.cpp",
+  "file": "/Users/christinaharalampopoulos/task-queue/src/producer_only.cpp",
+  "output": "CMakeFiles/producer.dir/src/producer_only.cpp.o"
+},
+{
+  "directory": "/Users/christinaharalampopoulos/task-queue/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/christinaharalampopoulos/task-queue/include -I/usr/local/include -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/consumer.dir/src/consumer_only.cpp.o -c /Users/christinaharalampopoulos/task-queue/src/consumer_only.cpp",
+  "file": "/Users/christinaharalampopoulos/task-queue/src/consumer_only.cpp",
+  "output": "CMakeFiles/consumer.dir/src/consumer_only.cpp.o"
 }
 ]

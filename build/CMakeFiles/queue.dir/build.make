@@ -72,28 +72,28 @@ include CMakeFiles/queue.dir/flags.make
 CMakeFiles/queue.dir/codegen:
 .PHONY : CMakeFiles/queue.dir/codegen
 
-CMakeFiles/queue.dir/task_queue.cpp.o: CMakeFiles/queue.dir/flags.make
-CMakeFiles/queue.dir/task_queue.cpp.o: /Users/christinaharalampopoulos/task-queue/task_queue.cpp
-CMakeFiles/queue.dir/task_queue.cpp.o: CMakeFiles/queue.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/christinaharalampopoulos/task-queue/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/queue.dir/task_queue.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/queue.dir/task_queue.cpp.o -MF CMakeFiles/queue.dir/task_queue.cpp.o.d -o CMakeFiles/queue.dir/task_queue.cpp.o -c /Users/christinaharalampopoulos/task-queue/task_queue.cpp
+CMakeFiles/queue.dir/src/task_queue.cpp.o: CMakeFiles/queue.dir/flags.make
+CMakeFiles/queue.dir/src/task_queue.cpp.o: /Users/christinaharalampopoulos/task-queue/src/task_queue.cpp
+CMakeFiles/queue.dir/src/task_queue.cpp.o: CMakeFiles/queue.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/christinaharalampopoulos/task-queue/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/queue.dir/src/task_queue.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/queue.dir/src/task_queue.cpp.o -MF CMakeFiles/queue.dir/src/task_queue.cpp.o.d -o CMakeFiles/queue.dir/src/task_queue.cpp.o -c /Users/christinaharalampopoulos/task-queue/src/task_queue.cpp
 
-CMakeFiles/queue.dir/task_queue.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/queue.dir/task_queue.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/christinaharalampopoulos/task-queue/task_queue.cpp > CMakeFiles/queue.dir/task_queue.cpp.i
+CMakeFiles/queue.dir/src/task_queue.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/queue.dir/src/task_queue.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/christinaharalampopoulos/task-queue/src/task_queue.cpp > CMakeFiles/queue.dir/src/task_queue.cpp.i
 
-CMakeFiles/queue.dir/task_queue.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/queue.dir/task_queue.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/christinaharalampopoulos/task-queue/task_queue.cpp -o CMakeFiles/queue.dir/task_queue.cpp.s
+CMakeFiles/queue.dir/src/task_queue.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/queue.dir/src/task_queue.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/christinaharalampopoulos/task-queue/src/task_queue.cpp -o CMakeFiles/queue.dir/src/task_queue.cpp.s
 
 # Object files for target queue
 queue_OBJECTS = \
-"CMakeFiles/queue.dir/task_queue.cpp.o"
+"CMakeFiles/queue.dir/src/task_queue.cpp.o"
 
 # External object files for target queue
 queue_EXTERNAL_OBJECTS =
 
-queue: CMakeFiles/queue.dir/task_queue.cpp.o
+queue: CMakeFiles/queue.dir/src/task_queue.cpp.o
 queue: CMakeFiles/queue.dir/build.make
 queue: /usr/local/lib/libredis++.dylib
 queue: /usr/local/lib/libhiredis.dylib
