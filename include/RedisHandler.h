@@ -11,8 +11,10 @@
 class RedisHandler {
 public:
     RedisHandler(const std::string& connection_str);
-    void push_task(const std::string& queue_name, const std::string& task);
-    std::optional<std::string> pop_task(const std::string& queue_name);
+    void push_task(const std::string& queue, const std::string& task);
+    std::optional<std::string> pop_task(const std::string& queue);
+    std::optional<std::string> pop_task_reliable(const std::string& source_queue, const std::string& dest_queue);
+    void acknowledge_task(const std::string& proc_queue, const std::string& task_data);
 
 private:
     std::unique_ptr<sw::redis::Redis> _redis;
