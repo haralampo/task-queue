@@ -1,6 +1,5 @@
 #include "RedisHandler.h"
 #include "json.h"
-#include "task.h"
 
 using namespace std;
 using namespace sw::redis;
@@ -8,7 +7,7 @@ using namespace sw::redis;
 int main() {
     // Create task
     // Convert from struct to json
-    // Convery from json to string
+    // Convert from json to string
     Task task{"101", "compute", "x=5"};
     nlohmann::json j = task;
     string s = j.dump();
