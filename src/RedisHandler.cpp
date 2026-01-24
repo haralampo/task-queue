@@ -45,24 +45,42 @@ void RedisHandler::acknowledge_task(const string& proc_queue, const string& task
     _redis->lrem(proc_queue, 1, task_data);
 }
 
+void RedisHandler::recover_tasks(const string& source, const string& destination) {
+    try {
+        // No blocking because we want to finish quickly
+        while (auto val = _redis->lmove(source, destination, ListWhence::LEFT, ListWhence::RIGHT)) {
+            cout << "Reaper: Recovered zombie task back to pending." << endl;
+        }
+    } 
+    catch (const Error& err) {
+        cerr << "Reaper failure: " << err.what() << endl;
+    }
+}
+
 WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const std::string& queue_name) : _handler(connection_str), _queue(queue_name) {
+    string pending_q = queue_name;
+    string processing_q = queue_name + ":processing";
+
+    _handler.recover_tasks(queue_name + ":processing", queue_name);
+
     for (int i = 0; i < num_threads; i++) {
-        _threads.emplace_back([this, q_name = _queue] {
-            string processing_queue = q_name + ":processing";
+        _threads.emplace_back([this, pending_q, processing_q] {
+
             while (!_stop) {
-                auto result = _handler.pop_task_reliable(q_name, processing_queue);
+                auto result = _handler.pop_task_reliable(pending_q, processing_q);
+
                 if (result.has_value()) {
                     string raw_data = std::move(result.value());
 
                     if (nlohmann::json::accept(raw_data)) {
+                        _handler.acknowledge_task(processing_q, raw_data);
                         auto j = nlohmann::json::parse(raw_data);
                         Task task(j);
                         cout << "Task id = " << task.id << ", type = " << task.type << endl;
-                        _handler.acknowledge_task(processing_queue, raw_data);
                     }
                     else {
+                        _handler.acknowledge_task(processing_q, raw_data);
                         cerr << "Invalid JSON received, removing from processing queue." << endl;
-                        _handler.acknowledge_task(processing_queue, raw_data);
                     }
                 }
             }
