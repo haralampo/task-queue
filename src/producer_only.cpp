@@ -5,18 +5,26 @@ using namespace std;
 using namespace sw::redis;
 
 int main() {
-    // Create task
-    // Convert from struct to json
-    // Convert from json to string
-    Task task{"101", "compute", "x=5"};
-    nlohmann::json j = task;
-    string s = j.dump();
-
     // Connect to Redis
     // Push task to queue
     RedisHandler redis_handler("tcp://127.0.0.1:6379");
     string queue = "queue";
-    redis_handler.push_task(queue, s);
+    string type = "EMAIL";
 
-    redis_handler.push_task(queue, "SHUTDOWN");
+    for (int i = 0; i < 1000; i++) {
+        if (i % 3 == 1) {
+            type = "CONVERT";
+        }
+        else if (i % 3 == 2) {
+            type = "UPLOAD";
+        }
+        else {
+            type = "EMAIL";
+        }
+
+        Task task{to_string(i + 1), type, "This is a payload."};
+        nlohmann::json j = task;
+        string s = j.dump();
+        redis_handler.push_task(queue, s);
+    }
 }

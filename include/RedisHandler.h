@@ -1,4 +1,8 @@
+
+#include <cmath>
+#include <ctime>
 #include <memory>
+#include <mutex>
 #include <string>
 #include <queue>
 #include <iostream>
@@ -18,17 +22,19 @@ public:
     void recover_tasks(const std::string& source, const std::string& destination);
 
 private:
-    std::unique_ptr<sw::redis::Redis> _redis;
+    sw::redis::Redis _redis;
 };
 
 class WorkerPool {
 public:
     WorkerPool(const std::string& connection_str, int num_threads, const std::string& queue_name);
+    void log(const std::string& message, const std::string& type);
     ~WorkerPool();
 
 private:
-    RedisHandler _handler; 
-    std::atomic<bool> _stop{false}; 
+    RedisHandler _handler;
+    std::atomic<bool> _stop{false};
     std::vector<std::thread> _threads;
     std::string _queue;
+    std::mutex _mtx;
 };

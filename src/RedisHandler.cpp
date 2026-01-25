@@ -1,26 +1,31 @@
 #include "RedisHandler.h"
 #include "sw/redis++/command.h"
 #include <chrono>
+#include <locale>
 #include <memory>
+#include <mutex>
+#include <thread>
 
 using namespace std;
 using namespace sw::redis;
 
-RedisHandler::RedisHandler(const string& connection_str) {
+string INFO = "Info";
+string ERROR = "Error";
+
+RedisHandler::RedisHandler(const string& connection_str) : _redis(connection_str) {
     try {
-        _redis = make_unique<Redis>(connection_str);
-        cout << "Connected to Redis!" << endl;
+        cout << "Connected to Redis!\n";
     }
     catch (Error& err) {
-        cerr << "Redis Connection Failed: " << err.what() << endl;
+        cerr << "Redis Connection Failed: " << err.what() << "\n";
     }
 }
 
 void RedisHandler::push_task(const string& queue, const string& task) {
     try {
-        _redis->rpush(queue, task);
+        _redis.rpush(queue, task);
     } catch (const Error& err) {
-        cerr << "Push failed: " << err.what() << endl;
+        cerr << "Push failed: " << err.what() << "\n";
     }
 }
 
@@ -28,32 +33,32 @@ optional<string> RedisHandler::pop_task(const string& queue) {
     try {
         // brpop returns an Optional<pair<string, string>> 
         // {list_name, value}
-        auto val = _redis->blpop(queue, chrono::seconds(1));
+        auto val = _redis.blpop(queue, chrono::seconds(1));
         if (val) { return val->second; }
     } 
     catch (const Error& err) {
-        cerr << "Pop failed: " << err.what() << endl;
+        cerr << "Pop failed: " << err.what() << "\n";
     }
     return nullopt;
 }
 
 optional<string> RedisHandler::pop_task_reliable(const string& source_queue, const string& dest_queue) {
-    return _redis->blmove(source_queue, dest_queue, ListWhence::LEFT, ListWhence::RIGHT, chrono::seconds(1));
+    return _redis.blmove(source_queue, dest_queue, ListWhence::LEFT, ListWhence::RIGHT, chrono::seconds(1));
 }
 
 void RedisHandler::acknowledge_task(const string& proc_queue, const string& task_data) {
-    _redis->lrem(proc_queue, 1, task_data);
+    _redis.lrem(proc_queue, 1, task_data);
 }
 
 void RedisHandler::recover_tasks(const string& source, const string& destination) {
     try {
         // No blocking because we want to finish quickly
-        while (auto val = _redis->lmove(source, destination, ListWhence::LEFT, ListWhence::RIGHT)) {
-            cout << "Reaper: Recovered zombie task back to pending." << endl;
+        while (auto val = _redis.lmove(source, destination, ListWhence::LEFT, ListWhence::RIGHT)) {
+            cout << "Reaper: Recovered zombie task back to pending.\n";
         }
     } 
     catch (const Error& err) {
-        cerr << "Reaper failure: " << err.what() << endl;
+        cerr << "Reaper failure: " << err.what() << "\n";
     }
 }
 
@@ -73,20 +78,35 @@ WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const
                     string raw_data = std::move(result.value());
 
                     if (nlohmann::json::accept(raw_data)) {
-                        _handler.acknowledge_task(processing_q, raw_data);
                         auto j = nlohmann::json::parse(raw_data);
                         Task task(j);
-                        cout << "Task id = " << task.id << ", type = " << task.type << endl;
+                        _handler.acknowledge_task(processing_q, raw_data);
+                        log("Processed Task " + task.id + " (Type: " + task.type + ")", INFO);
                     }
                     else {
                         _handler.acknowledge_task(processing_q, raw_data);
-                        cerr << "Invalid JSON received, removing from processing queue." << endl;
+                        log("Invalid JSON received, removing from processing queue.", ERROR);
                     }
                 }
             }
-            cout << "Stopping threads gracefully" << endl;
+            log("Thread shutting down.", INFO);
         });
     }
+}
+
+void WorkerPool::log(const string& message, const string& type) {
+    auto now = chrono::system_clock::to_time_t(chrono::system_clock::now());
+    struct tm time_struct; 
+    localtime_r(&now, &time_struct);
+    char time_str[20];
+    strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", &time_struct);
+
+    lock_guard<mutex> lock(_mtx);
+
+    cout << "[" << time_str << "] "
+         << "[" << type << "] "
+         << "[Thread " << this_thread::get_id() << "] "
+         << message << "\n";
 }
 
 WorkerPool::~WorkerPool() {
