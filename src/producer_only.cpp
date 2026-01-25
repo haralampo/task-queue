@@ -27,4 +27,5 @@ int main() {
         string s = j.dump();
         redis_handler.push_task(queue, s);
     }
+    redis_handler.push_task(queue, "Hi, I'm an invalid JSON.");
 }

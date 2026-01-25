@@ -62,6 +62,15 @@ void RedisHandler::recover_tasks(const string& source, const string& destination
     }
 }
 
+void RedisHandler::move_to_dlq(const string& source_queue, const string& dest_queue, const string& task_data) {
+    try {
+        _redis.lmove(source_queue, dest_queue, ListWhence::LEFT, ListWhence::RIGHT);
+    }
+    catch (const Error& e) {
+        cerr << "DLQ Move failed: " << e.what() << endl;
+    }
+}
+
 WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const std::string& queue_name) : _handler(connection_str), _queue(queue_name) {
     string pending_q = queue_name;
     string processing_q = queue_name + ":processing";
@@ -84,8 +93,9 @@ WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const
                         log("Processed Task " + task.id + " (Type: " + task.type + ")", INFO);
                     }
                     else {
+                        _handler.move_to_dlq(pending_q, pending_q + ":dead_letter", raw_data);
                         _handler.acknowledge_task(processing_q, raw_data);
-                        log("Invalid JSON received, removing from processing queue.", ERROR);
+                        log("Invalid JSON received, moving to dead letter queue.", ERROR);
                     }
                 }
             }
