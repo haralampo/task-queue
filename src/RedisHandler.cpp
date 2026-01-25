@@ -1,5 +1,6 @@
 #include "RedisHandler.h"
 #include "sw/redis++/command.h"
+#include "sw/redis++/command_options.h"
 #include <chrono>
 #include <locale>
 #include <memory>
@@ -11,6 +12,11 @@ using namespace sw::redis;
 
 string INFO = "Info";
 string ERROR = "Error";
+
+random_device rd;
+mt19937 gen(rd());
+uniform_int_distribution<> distrib(1, 20);
+
 
 RedisHandler::RedisHandler(const string& connection_str) : _redis(connection_str) {
     try {
@@ -62,12 +68,24 @@ void RedisHandler::recover_tasks(const string& source, const string& destination
     }
 }
 
-void RedisHandler::move_to_dlq(const string& source_queue, const string& dest_queue, const string& task_data) {
+void RedisHandler::move_to_dlq(const string& source_queue, const string& dest_queue) {
     try {
         _redis.lmove(source_queue, dest_queue, ListWhence::LEFT, ListWhence::RIGHT);
     }
     catch (const Error& e) {
         cerr << "DLQ Move failed: " << e.what() << endl;
+    }
+}
+
+void RedisHandler::retry_task(const string& proc_queue, const string& pending_q, const string& old_data, const string& new_data) {
+    try {
+        auto tx = _redis.transaction();
+        tx.lrem(proc_queue, 1, old_data);
+        tx.rpush(pending_q, new_data);
+        tx.exec();
+    }
+    catch (const Error& e) {
+        cerr << "Retry transaction failed: " << e.what() << endl;
     }
 }
 
@@ -81,20 +99,39 @@ WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const
         _threads.emplace_back([this, pending_q, processing_q] {
 
             while (!_stop) {
+                // pop task from pending queue, move to processing queue
                 auto result = _handler.pop_task_reliable(pending_q, processing_q);
 
                 if (result.has_value()) {
                     string raw_data = std::move(result.value());
 
+                    // if valid JSON
                     if (nlohmann::json::accept(raw_data)) {
                         auto j = nlohmann::json::parse(raw_data);
-                        Task task(j);
-                        _handler.acknowledge_task(processing_q, raw_data);
-                        log("Processed Task " + task.id + " (Type: " + task.type + ")", INFO);
+                        Task task = j.get<Task>();
+
+                        int random_num = distrib(gen);
+                        if (random_num % 3 == 0) {
+                            if (task.retries < 3) {
+                                task.retries++;
+                                string retried_data = nlohmann::json(task).dump();
+                                _handler.retry_task(processing_q, pending_q, raw_data, retried_data);
+                                log("Processing task " + task.id + " failed, retry #" + to_string(task.retries), ERROR);
+                            }
+                            else {
+                                _handler.move_to_dlq(processing_q, pending_q + ":dead_letter");
+                                log("Task " + task.id + " exceeded retry limit, sending to dead letter queue.", ERROR);
+                            }
+                        }
+                        else {
+                            // successfully processed, remove task from processing queue
+                            _handler.acknowledge_task(processing_q, raw_data);
+                            log("Processed Task " + task.id + " (Type: " + task.type + ")", INFO);
+                        }
                     }
                     else {
-                        _handler.move_to_dlq(pending_q, pending_q + ":dead_letter", raw_data);
-                        _handler.acknowledge_task(processing_q, raw_data);
+                        // move task from processing to dead letter
+                        _handler.move_to_dlq(processing_q, pending_q + ":dead_letter");
                         log("Invalid JSON received, moving to dead letter queue.", ERROR);
                     }
                 }

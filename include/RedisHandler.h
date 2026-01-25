@@ -20,7 +20,8 @@ public:
     std::optional<std::string> pop_task_reliable(const std::string& source_queue, const std::string& dest_queue);
     void acknowledge_task(const std::string& proc_queue, const std::string& task_data);
     void recover_tasks(const std::string& source, const std::string& destination);
-    void move_to_dlq(const std::string& source_queue, const std::string& dest_queue, const std::string& task_data);
+    void move_to_dlq(const std::string& source_queue, const std::string& dest_queue);
+    void retry_task(const std::string& proc_queue, const std::string& pending_q, const std::string& old_data, const std::string& new_data);
 
 private:
     sw::redis::Redis _redis;
