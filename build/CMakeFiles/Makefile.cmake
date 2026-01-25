@@ -60,4 +60,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/hello.dir/DependInfo.cmake"
   "CMakeFiles/producer.dir/DependInfo.cmake"
   "CMakeFiles/consumer.dir/DependInfo.cmake"
+  "CMakeFiles/monitor.dir/DependInfo.cmake"
   )

@@ -27,3 +27,6 @@ target_link_libraries(producer PRIVATE task_lib ${REDIS_PLUS_LIB} ${HIREDIS_LIB}
 
 add_executable(consumer src/consumer_only.cpp)
 target_link_libraries(consumer PRIVATE task_lib ${REDIS_PLUS_LIB} ${HIREDIS_LIB} pthread)
+
+add_executable(monitor src/monitor.cpp)
+target_link_libraries(monitor PRIVATE task_lib ${REDIS_PLUS_LIB} ${HIREDIS_LIB} pthread)

@@ -22,5 +22,11 @@
   "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/christinaharalampopoulos/task-queue/include -I/usr/local/include -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/consumer.dir/src/consumer_only.cpp.o -c /Users/christinaharalampopoulos/task-queue/src/consumer_only.cpp",
   "file": "/Users/christinaharalampopoulos/task-queue/src/consumer_only.cpp",
   "output": "CMakeFiles/consumer.dir/src/consumer_only.cpp.o"
+},
+{
+  "directory": "/Users/christinaharalampopoulos/task-queue/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/christinaharalampopoulos/task-queue/include -I/usr/local/include -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/monitor.dir/src/monitor.cpp.o -c /Users/christinaharalampopoulos/task-queue/src/monitor.cpp",
+  "file": "/Users/christinaharalampopoulos/task-queue/src/monitor.cpp",
+  "output": "CMakeFiles/monitor.dir/src/monitor.cpp.o"
 }
 ]

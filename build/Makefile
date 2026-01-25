@@ -168,6 +168,19 @@ consumer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/consumer.dir/build.make CMakeFiles/consumer.dir/build
 .PHONY : consumer/fast
 
+#=============================================================================
+# Target rules for targets named monitor
+
+# Build rule for target.
+monitor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 monitor
+.PHONY : monitor
+
+# fast build rule for target.
+monitor/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitor.dir/build.make CMakeFiles/monitor.dir/build
+.PHONY : monitor/fast
+
 src/RedisHandler.o: src/RedisHandler.cpp.o
 .PHONY : src/RedisHandler.o
 
@@ -240,6 +253,30 @@ src/hello_world.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/hello_world.cpp.s
 .PHONY : src/hello_world.cpp.s
 
+src/monitor.o: src/monitor.cpp.o
+.PHONY : src/monitor.o
+
+# target to build an object file
+src/monitor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitor.dir/build.make CMakeFiles/monitor.dir/src/monitor.cpp.o
+.PHONY : src/monitor.cpp.o
+
+src/monitor.i: src/monitor.cpp.i
+.PHONY : src/monitor.i
+
+# target to preprocess a source file
+src/monitor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitor.dir/build.make CMakeFiles/monitor.dir/src/monitor.cpp.i
+.PHONY : src/monitor.cpp.i
+
+src/monitor.s: src/monitor.cpp.s
+.PHONY : src/monitor.s
+
+# target to generate assembly for a file
+src/monitor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/monitor.dir/build.make CMakeFiles/monitor.dir/src/monitor.cpp.s
+.PHONY : src/monitor.cpp.s
+
 src/producer_only.o: src/producer_only.cpp.o
 .PHONY : src/producer_only.o
 
@@ -274,6 +311,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... consumer"
 	@echo "... hello"
+	@echo "... monitor"
 	@echo "... producer"
 	@echo "... task_lib"
 	@echo "... src/RedisHandler.o"
@@ -285,6 +323,9 @@ help:
 	@echo "... src/hello_world.o"
 	@echo "... src/hello_world.i"
 	@echo "... src/hello_world.s"
+	@echo "... src/monitor.o"
+	@echo "... src/monitor.i"
+	@echo "... src/monitor.s"
 	@echo "... src/producer_only.o"
 	@echo "... src/producer_only.i"
 	@echo "... src/producer_only.s"

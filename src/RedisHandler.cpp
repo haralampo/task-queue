@@ -89,6 +89,10 @@ void RedisHandler::retry_task(const string& proc_queue, const string& pending_q,
     }
 }
 
+long long RedisHandler::get_queue_size(const string& name) {
+    return _redis.llen(name);
+}
+
 WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const std::string& queue_name) : _handler(connection_str), _queue(queue_name) {
     string pending_q = queue_name;
     string processing_q = queue_name + ":processing";
@@ -109,6 +113,7 @@ WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const
                     if (nlohmann::json::accept(raw_data)) {
                         auto j = nlohmann::json::parse(raw_data);
                         Task task = j.get<Task>();
+                        this_thread::sleep_for(chrono::milliseconds(250));
 
                         int random_num = distrib(gen);
                         if (random_num % 3 == 0) {
