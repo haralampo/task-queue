@@ -68,9 +68,12 @@ void RedisHandler::recover_tasks(const string& source, const string& destination
     }
 }
 
-void RedisHandler::move_to_dlq(const string& source_queue, const string& dest_queue) {
+void RedisHandler::move_to_dlq(const string& proc_queue, const string& dlq_queue, const string& task_data) {
     try {
-        _redis.lmove(source_queue, dest_queue, ListWhence::LEFT, ListWhence::RIGHT);
+        auto tx = _redis.transaction();
+        tx.lrem(proc_queue, 1, task_data); // Remove specific task
+        tx.rpush(dlq_queue, task_data);
+        tx.exec();
     }
     catch (const Error& e) {
         cerr << "DLQ Move failed: " << e.what() << endl;
@@ -124,7 +127,7 @@ WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const
                                 log("Processing task " + task.id + " failed, retry #" + to_string(task.retries), ERROR);
                             }
                             else {
-                                _handler.move_to_dlq(processing_q, pending_q + ":dead_letter");
+                                _handler.move_to_dlq(processing_q, pending_q + ":dead_letter", raw_data);
                                 log("Task " + task.id + " exceeded retry limit, sending to dead letter queue.", ERROR);
                             }
                         }
@@ -136,7 +139,7 @@ WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const
                     }
                     else {
                         // move task from processing to dead letter
-                        _handler.move_to_dlq(processing_q, pending_q + ":dead_letter");
+                        _handler.move_to_dlq(processing_q, pending_q + ":dead_letter", raw_data);
                         log("Invalid JSON received, moving to dead letter queue.", ERROR);
                     }
                 }

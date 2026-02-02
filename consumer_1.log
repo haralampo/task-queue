@@ -1,0 +1,505 @@
+Connected to Redis!
+Consumer running. Waiting for tasks...
+[2026-02-02 17:13:59] [Info] [Thread 0x70000efe4000] Processed Task 19 (Type: EMAIL)
+[2026-02-02 17:13:59] [Info] [Thread 0x70000f1f0000] Processed Task 16 (Type: EMAIL)
+[2026-02-02 17:13:59] [Info] [Thread 0x70000f067000] Processed Task 7 (Type: EMAIL)
+[2026-02-02 17:13:59] [Info] [Thread 0x70000f0ea000] Processed Task 9 (Type: UPLOAD)
+[2026-02-02 17:13:59] [Info] [Thread 0x70000ee5b000] Processed Task 12 (Type: UPLOAD)
+[2026-02-02 17:13:59] [Info] [Thread 0x70000ef61000] Processed Task 20 (Type: CONVERT)
+[2026-02-02 17:13:59] [Info] [Thread 0x70000edd8000] Processed Task 11 (Type: CONVERT)
+[2026-02-02 17:13:59] [Info] [Thread 0x70000ed55000] Processed Task 2 (Type: CONVERT)
+[2026-02-02 17:13:59] [Error] [Thread 0x70000eede000] Processing task 10 failed, retry #1
+[2026-02-02 17:13:59] [Error] [Thread 0x70000f16d000] Processing task 13 failed, retry #1
+[2026-02-02 17:14:00] [Info] [Thread 0x70000ef61000] Processed Task 45 (Type: UPLOAD)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000eede000] Processed Task 48 (Type: UPLOAD)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000f067000] Processed Task 42 (Type: UPLOAD)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000edd8000] Processed Task 46 (Type: EMAIL)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000f16d000] Processed Task 50 (Type: CONVERT)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000f1f0000] Processed Task 41 (Type: CONVERT)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000f0ea000] Processed Task 43 (Type: EMAIL)
+[2026-02-02 17:14:00] [Error] [Thread 0x70000efe4000] Processing task 40 failed, retry #1
+[2026-02-02 17:14:00] [Error] [Thread 0x70000ed55000] Processing task 47 failed, retry #1
+[2026-02-02 17:14:00] [Error] [Thread 0x70000ee5b000] Processing task 44 failed, retry #1
+[2026-02-02 17:14:00] [Info] [Thread 0x70000f1f0000] Processed Task 73 (Type: EMAIL)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000edd8000] Processed Task 71 (Type: CONVERT)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000eede000] Processed Task 74 (Type: CONVERT)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000ef61000] Processed Task 61 (Type: EMAIL)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000ee5b000] Processed Task 79 (Type: EMAIL)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000f0ea000] Processed Task 75 (Type: UPLOAD)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000f16d000] Processed Task 72 (Type: UPLOAD)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000ed55000] Processed Task 78 (Type: UPLOAD)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000efe4000] Processed Task 77 (Type: CONVERT)
+[2026-02-02 17:14:00] [Error] [Thread 0x70000f067000] Processing task 70 failed, retry #1
+[2026-02-02 17:14:00] [Info] [Thread 0x70000f16d000] Processed Task 99 (Type: UPLOAD)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000ed55000] Processed Task 103 (Type: EMAIL)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000f0ea000] Processed Task 98 (Type: CONVERT)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000edd8000] Processed Task 93 (Type: UPLOAD)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000f1f0000] Processed Task 92 (Type: CONVERT)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000ef61000] Processed Task 95 (Type: CONVERT)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000eede000] Processed Task 94 (Type: EMAIL)
+[2026-02-02 17:14:00] [Info] [Thread 0x70000f067000] Processed Task 106 (Type: EMAIL)
+[2026-02-02 17:14:00] [Error] [Thread 0x70000ee5b000] Processing task 96 failed, retry #1
+[2026-02-02 17:14:00] [Error] [Thread 0x70000efe4000] Processing task 104 failed, retry #1
+[2026-02-02 17:14:01] [Info] [Thread 0x70000f16d000] Processed Task 122 (Type: CONVERT)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000f067000] Processed Task 131 (Type: CONVERT)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000ef61000] Processed Task 128 (Type: CONVERT)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000edd8000] Processed Task 127 (Type: EMAIL)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000f0ea000] Processed Task 125 (Type: CONVERT)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000ed55000] Processed Task 124 (Type: EMAIL)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000ee5b000] Processed Task 136 (Type: EMAIL)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000efe4000] Processed Task 139 (Type: EMAIL)
+[2026-02-02 17:14:01] [Error] [Thread 0x70000f1f0000] Processing task 126 failed, retry #1
+[2026-02-02 17:14:01] [Error] [Thread 0x70000eede000] Processing task 129 failed, retry #1
+[2026-02-02 17:14:01] [Info] [Thread 0x70000f067000] Processed Task 154 (Type: EMAIL)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000edd8000] Processed Task 158 (Type: CONVERT)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000f16d000] Processed Task 157 (Type: EMAIL)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000f0ea000] Processed Task 159 (Type: UPLOAD)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000ed55000] Processed Task 162 (Type: UPLOAD)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000efe4000] Processed Task 164 (Type: CONVERT)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000f1f0000] Processed Task 169 (Type: EMAIL)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000eede000] Processed Task 170 (Type: CONVERT)
+[2026-02-02 17:14:01] [Error] [Thread 0x70000ee5b000] Processing task 161 failed, retry #1
+[2026-02-02 17:14:01] [Error] [Thread 0x70000ef61000] Processing task 153 failed, retry #1
+[2026-02-02 17:14:01] [Info] [Thread 0x70000ee5b000] Processed Task 194 (Type: CONVERT)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000ef61000] Processed Task 197 (Type: CONVERT)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000f1f0000] Processed Task 192 (Type: UPLOAD)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000ed55000] Processed Task 186 (Type: UPLOAD)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000edd8000] Processed Task 187 (Type: EMAIL)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000eede000] Processed Task 193 (Type: EMAIL)
+[2026-02-02 17:14:01] [Error] [Thread 0x70000f067000] Processing task 184 failed, retry #1
+[2026-02-02 17:14:01] [Error] [Thread 0x70000efe4000] Processing task 191 failed, retry #1
+[2026-02-02 17:14:01] [Error] [Thread 0x70000f0ea000] Processing task 185 failed, retry #1
+[2026-02-02 17:14:01] [Error] [Thread 0x70000f16d000] Processing task 188 failed, retry #1
+[2026-02-02 17:14:01] [Info] [Thread 0x70000ee5b000] Processed Task 212 (Type: CONVERT)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000eede000] Processed Task 219 (Type: UPLOAD)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000edd8000] Processed Task 217 (Type: EMAIL)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000efe4000] Processed Task 227 (Type: CONVERT)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000ef61000] Processed Task 213 (Type: UPLOAD)
+[2026-02-02 17:14:01] [Info] [Thread 0x70000f0ea000] Processed Task 228 (Type: UPLOAD)
+[2026-02-02 17:14:01] [Error] [Thread 0x70000f1f0000] Processing task 214 failed, retry #1
+[2026-02-02 17:14:01] [Error] [Thread 0x70000f067000] Processing task 225 failed, retry #1
+[2026-02-02 17:14:01] [Error] [Thread 0x70000ed55000] Processing task 215 failed, retry #1
+[2026-02-02 17:14:01] [Error] [Thread 0x70000f16d000] Processing task 230 failed, retry #1
+[2026-02-02 17:14:02] [Info] [Thread 0x70000ef61000] Processed Task 250 (Type: EMAIL)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000f0ea000] Processed Task 252 (Type: UPLOAD)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000ee5b000] Processed Task 242 (Type: CONVERT)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000edd8000] Processed Task 245 (Type: CONVERT)
+[2026-02-02 17:14:02] [Error] [Thread 0x70000efe4000] Processing task 248 failed, retry #1
+[2026-02-02 17:14:02] [Error] [Thread 0x70000eede000] Processing task 243 failed, retry #1
+[2026-02-02 17:14:02] [Info] [Thread 0x70000f067000] Processed Task 258 (Type: UPLOAD)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000f1f0000] Processed Task 254 (Type: CONVERT)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000f16d000] Processed Task 260 (Type: CONVERT)
+[2026-02-02 17:14:02] [Error] [Thread 0x70000ed55000] Processing task 259 failed, retry #1
+[2026-02-02 17:14:02] [Info] [Thread 0x70000ee5b000] Processed Task 276 (Type: UPLOAD)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000ef61000] Processed Task 273 (Type: UPLOAD)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000edd8000] Processed Task 275 (Type: CONVERT)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000efe4000] Processed Task 278 (Type: CONVERT)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000eede000] Processed Task 279 (Type: UPLOAD)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000f0ea000] Processed Task 274 (Type: EMAIL)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000f067000] Processed Task 283 (Type: EMAIL)
+[2026-02-02 17:14:02] [Error] [Thread 0x70000f1f0000] Processing task 286 failed, retry #1
+[2026-02-02 17:14:02] [Error] [Thread 0x70000f16d000] Processing task 287 failed, retry #1
+[2026-02-02 17:14:02] [Info] [Thread 0x70000ed55000] Processed Task 290 (Type: CONVERT)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000f067000] Processed Task 314 (Type: CONVERT)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000edd8000] Processed Task 306 (Type: UPLOAD)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000ef61000] Processed Task 303 (Type: UPLOAD)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000eede000] Processed Task 308 (Type: CONVERT)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000efe4000] Processed Task 307 (Type: EMAIL)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000f16d000] Processed Task 317 (Type: CONVERT)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000f1f0000] Processed Task 316 (Type: EMAIL)
+[2026-02-02 17:14:02] [Error] [Thread 0x70000ee5b000] Processing task 305 failed, retry #1
+[2026-02-02 17:14:02] [Error] [Thread 0x70000f0ea000] Processing task 311 failed, retry #1
+[2026-02-02 17:14:02] [Info] [Thread 0x70000ed55000] Processed Task 318 (Type: UPLOAD)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000f1f0000] Processed Task 343 (Type: EMAIL)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000ef61000] Processed Task 335 (Type: CONVERT)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000ee5b000] Processed Task 344 (Type: CONVERT)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000edd8000] Processed Task 334 (Type: EMAIL)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000f0ea000] Processed Task 346 (Type: EMAIL)
+[2026-02-02 17:14:02] [Info] [Thread 0x70000eede000] Processed Task 336 (Type: UPLOAD)
+[2026-02-02 17:14:02] [Error] [Thread 0x70000f067000] Processing task 332 failed, retry #1
+[2026-02-02 17:14:02] [Error] [Thread 0x70000f16d000] Processing task 342 failed, retry #1
+[2026-02-02 17:14:02] [Error] [Thread 0x70000efe4000] Processing task 338 failed, retry #1
+[2026-02-02 17:14:02] [Info] [Thread 0x70000ed55000] Processed Task 348 (Type: UPLOAD)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000f1f0000] Processed Task 364 (Type: EMAIL)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000ee5b000] Processed Task 366 (Type: UPLOAD)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000edd8000] Processed Task 368 (Type: CONVERT)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000f0ea000] Processed Task 370 (Type: EMAIL)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000efe4000] Processed Task 377 (Type: CONVERT)
+[2026-02-02 17:14:03] [Error] [Thread 0x70000eede000] Processing task 372 failed, retry #1
+[2026-02-02 17:14:03] [Error] [Thread 0x70000ef61000] Processing task 363 failed, retry #1
+[2026-02-02 17:14:03] [Error] [Thread 0x70000f067000] Processing task 373 failed, retry #1
+[2026-02-02 17:14:03] [Error] [Thread 0x70000f16d000] Processing task 374 failed, retry #1
+[2026-02-02 17:14:03] [Error] [Thread 0x70000ed55000] Processing task 378 failed, retry #1
+[2026-02-02 17:14:03] [Info] [Thread 0x70000f0ea000] Processed Task 398 (Type: CONVERT)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000f1f0000] Processed Task 393 (Type: UPLOAD)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000edd8000] Processed Task 397 (Type: EMAIL)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000f067000] Processed Task 406 (Type: EMAIL)
+[2026-02-02 17:14:03] [Error] [Thread 0x70000ee5b000] Processing task 395 failed, retry #1
+[2026-02-02 17:14:03] [Error] [Thread 0x70000efe4000] Processing task 400 failed, retry #1
+[2026-02-02 17:14:03] [Error] [Thread 0x70000ed55000] Processing task 408 failed, retry #1
+[2026-02-02 17:14:03] [Error] [Thread 0x70000f16d000] Processing task 407 failed, retry #1
+[2026-02-02 17:14:03] [Error] [Thread 0x70000ef61000] Processing task 405 failed, retry #1
+[2026-02-02 17:14:03] [Error] [Thread 0x70000eede000] Processing task 404 failed, retry #1
+[2026-02-02 17:14:03] [Info] [Thread 0x70000edd8000] Processed Task 425 (Type: CONVERT)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000f16d000] Processed Task 435 (Type: UPLOAD)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000f1f0000] Processed Task 423 (Type: UPLOAD)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000f067000] Processed Task 429 (Type: UPLOAD)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000efe4000] Processed Task 432 (Type: UPLOAD)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000eede000] Processed Task 438 (Type: UPLOAD)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000ee5b000] Processed Task 431 (Type: CONVERT)
+[2026-02-02 17:14:03] [Error] [Thread 0x70000ef61000] Processing task 437 failed, retry #1
+[2026-02-02 17:14:03] [Error] [Thread 0x70000f0ea000] Processing task 422 failed, retry #1
+[2026-02-02 17:14:03] [Error] [Thread 0x70000ed55000] Processing task 434 failed, retry #1
+[2026-02-02 17:14:03] [Info] [Thread 0x70000f1f0000] Processed Task 458 (Type: CONVERT)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000efe4000] Processed Task 460 (Type: EMAIL)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000eede000] Processed Task 461 (Type: CONVERT)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000f067000] Processed Task 459 (Type: UPLOAD)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000f16d000] Processed Task 454 (Type: EMAIL)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000ed55000] Processed Task 467 (Type: CONVERT)
+[2026-02-02 17:14:03] [Info] [Thread 0x70000f0ea000] Processed Task 468 (Type: UPLOAD)
+[2026-02-02 17:14:03] [Error] [Thread 0x70000ee5b000] Processing task 462 failed, retry #1
+[2026-02-02 17:14:03] [Error] [Thread 0x70000edd8000] Processing task 456 failed, retry #1
+[2026-02-02 17:14:03] [Error] [Thread 0x70000ef61000] Processing task 466 failed, retry #1
+[2026-02-02 17:14:04] [Info] [Thread 0x70000eede000] Processed Task 485 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000f1f0000] Processed Task 483 (Type: UPLOAD)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000f0ea000] Processed Task 494 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000f067000] Processed Task 487 (Type: EMAIL)
+[2026-02-02 17:14:04] [Error] [Thread 0x70000f16d000] Processing task 488 failed, retry #1
+[2026-02-02 17:14:04] [Error] [Thread 0x70000ed55000] Processing task 492 failed, retry #1
+[2026-02-02 17:14:04] [Info] [Thread 0x70000edd8000] Processed Task 496 (Type: EMAIL)
+[2026-02-02 17:14:04] [Error] [Thread 0x70000efe4000] Processing task 484 failed, retry #1
+[2026-02-02 17:14:04] [Info] [Thread 0x70000ef61000] Processed Task 497 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000ee5b000] Processed Task 495 (Type: UPLOAD)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000eede000] Processed Task 512 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000f16d000] Processed Task 521 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000f0ea000] Processed Task 516 (Type: UPLOAD)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000f067000] Processed Task 518 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000edd8000] Processed Task 524 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000efe4000] Processed Task 525 (Type: UPLOAD)
+[2026-02-02 17:14:04] [Error] [Thread 0x70000f1f0000] Processing task 513 failed, retry #1
+[2026-02-02 17:14:04] [Error] [Thread 0x70000ee5b000] Processing task 528 failed, retry #1
+[2026-02-02 17:14:04] [Error] [Thread 0x70000ed55000] Processing task 522 failed, retry #1
+[2026-02-02 17:14:04] [Error] [Thread 0x70000ef61000] Processing task 527 failed, retry #1
+[2026-02-02 17:14:04] [Info] [Thread 0x70000eede000] Processed Task 542 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000ed55000] Processed Task 557 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000efe4000] Processed Task 553 (Type: EMAIL)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000f0ea000] Processed Task 545 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000f067000] Processed Task 546 (Type: UPLOAD)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000ee5b000] Processed Task 556 (Type: EMAIL)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000f1f0000] Processed Task 555 (Type: UPLOAD)
+[2026-02-02 17:14:04] [Error] [Thread 0x70000f16d000] Processing task 543 failed, retry #1
+[2026-02-02 17:14:04] [Error] [Thread 0x70000edd8000] Processing task 549 failed, retry #1
+[2026-02-02 17:14:04] [Error] [Thread 0x70000ef61000] Processing task 558 failed, retry #1
+[2026-02-02 17:14:04] [Info] [Thread 0x70000eede000] Processed Task 572 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000f0ea000] Processed Task 578 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000f1f0000] Processed Task 584 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000ed55000] Processed Task 573 (Type: UPLOAD)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000f067000] Processed Task 575 (Type: CONVERT)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000f16d000] Processed Task 585 (Type: UPLOAD)
+[2026-02-02 17:14:04] [Info] [Thread 0x70000ee5b000] Processed Task 582 (Type: UPLOAD)
+[2026-02-02 17:14:04] [Error] [Thread 0x70000efe4000] Processing task 574 failed, retry #1
+[2026-02-02 17:14:04] [Error] [Thread 0x70000ef61000] Processing task 588 failed, retry #1
+[2026-02-02 17:14:04] [Error] [Thread 0x70000edd8000] Processing task 586 failed, retry #1
+[2026-02-02 17:14:05] [Error] [Thread 0x70000eede000] Processing task 602 failed, retry #1
+[2026-02-02 17:14:05] [Info] [Thread 0x70000f0ea000] Processed Task 603 (Type: UPLOAD)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000f1f0000] Processed Task 606 (Type: UPLOAD)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000f067000] Processed Task 608 (Type: CONVERT)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000ee5b000] Processed Task 612 (Type: UPLOAD)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000efe4000] Processed Task 616 (Type: EMAIL)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000edd8000] Processed Task 618 (Type: UPLOAD)
+[2026-02-02 17:14:05] [Error] [Thread 0x70000f16d000] Processing task 610 failed, retry #1
+[2026-02-02 17:14:05] [Error] [Thread 0x70000ed55000] Processing task 607 failed, retry #1
+[2026-02-02 17:14:05] [Error] [Thread 0x70000ef61000] Processing task 617 failed, retry #1
+[2026-02-02 17:14:05] [Error] [Thread 0x70000eede000] Processing task 632 failed, retry #1
+[2026-02-02 17:14:05] [Info] [Thread 0x70000efe4000] Processed Task 641 (Type: CONVERT)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000f1f0000] Processed Task 635 (Type: CONVERT)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000f067000] Processed Task 636 (Type: UPLOAD)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000ef61000] Processed Task 649 (Type: EMAIL)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000edd8000] Processed Task 643 (Type: EMAIL)
+[2026-02-02 17:14:05] [Error] [Thread 0x70000ee5b000] Processing task 638 failed, retry #1
+[2026-02-02 17:14:05] [Error] [Thread 0x70000f0ea000] Processing task 633 failed, retry #1
+[2026-02-02 17:14:05] [Error] [Thread 0x70000f16d000] Processing task 645 failed, retry #1
+[2026-02-02 17:14:05] [Error] [Thread 0x70000ed55000] Processing task 647 failed, retry #1
+[2026-02-02 17:14:05] [Info] [Thread 0x70000eede000] Processed Task 662 (Type: CONVERT)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000f1f0000] Processed Task 669 (Type: UPLOAD)
+[2026-02-02 17:14:05] [Error] [Thread 0x70000f067000] Processing task 668 failed, retry #1
+[2026-02-02 17:14:05] [Error] [Thread 0x70000efe4000] Processing task 665 failed, retry #1
+[2026-02-02 17:14:05] [Info] [Thread 0x70000ed55000] Processed Task 679 (Type: EMAIL)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000edd8000] Processed Task 671 (Type: CONVERT)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000ef61000] Processed Task 670 (Type: EMAIL)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000f0ea000] Processed Task 676 (Type: EMAIL)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000f16d000] Processed Task 678 (Type: UPLOAD)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000ee5b000] Processed Task 675 (Type: UPLOAD)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000eede000] Processed Task 692 (Type: CONVERT)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000f067000] Processed Task 698 (Type: CONVERT)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000efe4000] Processed Task 699 (Type: UPLOAD)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000f1f0000] Processed Task 694 (Type: EMAIL)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000edd8000] Processed Task 700 (Type: EMAIL)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000ef61000] Processed Task 702 (Type: UPLOAD)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000ee5b000] Processed Task 709 (Type: EMAIL)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000ed55000] Processed Task 701 (Type: CONVERT)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000f0ea000] Processed Task 705 (Type: UPLOAD)
+[2026-02-02 17:14:05] [Info] [Thread 0x70000f16d000] Processed Task 707 (Type: CONVERT)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000eede000] Processed Task 722 (Type: CONVERT)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000f1f0000] Processed Task 726 (Type: UPLOAD)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000efe4000] Processed Task 725 (Type: CONVERT)
+[2026-02-02 17:14:06] [Error] [Thread 0x70000f067000] Processing task 723 failed, retry #1
+[2026-02-02 17:14:06] [Info] [Thread 0x70000ee5b000] Processed Task 734 (Type: CONVERT)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000f0ea000] Processed Task 738 (Type: UPLOAD)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000ef61000] Processed Task 732 (Type: UPLOAD)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000f16d000] Processed Task 739 (Type: EMAIL)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000edd8000] Processed Task 731 (Type: CONVERT)
+[2026-02-02 17:14:06] [Error] [Thread 0x70000ed55000] Processing task 737 failed, retry #1
+[2026-02-02 17:14:06] [Info] [Thread 0x70000eede000] Processed Task 752 (Type: CONVERT)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000f1f0000] Processed Task 753 (Type: UPLOAD)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000efe4000] Processed Task 755 (Type: CONVERT)
+[2026-02-02 17:14:06] [Error] [Thread 0x70000f067000] Processing task 757 failed, retry #1
+[2026-02-02 17:14:06] [Info] [Thread 0x70000f0ea000] Processed Task 766 (Type: EMAIL)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000ee5b000] Processed Task 762 (Type: UPLOAD)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000edd8000] Processed Task 768 (Type: UPLOAD)
+[2026-02-02 17:14:06] [Error] [Thread 0x70000f16d000] Processing task 767 failed, retry #1
+[2026-02-02 17:14:06] [Error] [Thread 0x70000ef61000] Processing task 764 failed, retry #1
+[2026-02-02 17:14:06] [Info] [Thread 0x70000ed55000] Processed Task 770 (Type: CONVERT)
+[2026-02-02 17:14:06] [Error] [Thread 0x70000eede000] Processing task 782 failed, retry #1
+[2026-02-02 17:14:06] [Info] [Thread 0x70000f1f0000] Processed Task 784 (Type: EMAIL)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000f067000] Processed Task 789 (Type: UPLOAD)
+[2026-02-02 17:14:06] [Error] [Thread 0x70000efe4000] Processing task 787 failed, retry #1
+[2026-02-02 17:14:06] [Info] [Thread 0x70000f16d000] Processed Task 797 (Type: CONVERT)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000f0ea000] Processed Task 790 (Type: EMAIL)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000edd8000] Processed Task 795 (Type: UPLOAD)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000ef61000] Processed Task 796 (Type: EMAIL)
+[2026-02-02 17:14:06] [Error] [Thread 0x70000ee5b000] Processing task 791 failed, retry #1
+[2026-02-02 17:14:06] [Error] [Thread 0x70000ed55000] Processing task 800 failed, retry #1
+[2026-02-02 17:14:06] [Info] [Thread 0x70000f1f0000] Processed Task 813 (Type: UPLOAD)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000f067000] Processed Task 818 (Type: CONVERT)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000efe4000] Processed Task 819 (Type: UPLOAD)
+[2026-02-02 17:14:06] [Error] [Thread 0x70000eede000] Processing task 812 failed, retry #1
+[2026-02-02 17:14:06] [Info] [Thread 0x70000ee5b000] Processed Task 827 (Type: CONVERT)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000ed55000] Processed Task 830 (Type: CONVERT)
+[2026-02-02 17:14:06] [Info] [Thread 0x70000f16d000] Processed Task 820 (Type: EMAIL)
+[2026-02-02 17:14:06] [Error] [Thread 0x70000ef61000] Processing task 825 failed, retry #1
+[2026-02-02 17:14:06] [Error] [Thread 0x70000f0ea000] Processing task 822 failed, retry #1
+[2026-02-02 17:14:06] [Error] [Thread 0x70000edd8000] Processing task 823 failed, retry #1
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f1f0000] Processed Task 843 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f067000] Processed Task 845 (Type: CONVERT)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000efe4000] Processed Task 848 (Type: CONVERT)
+[2026-02-02 17:14:07] [Error] [Thread 0x70000eede000] Processing task 849 failed, retry #1
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f16d000] Processed Task 853 (Type: EMAIL)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000ed55000] Processed Task 852 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000ef61000] Processed Task 856 (Type: EMAIL)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f0ea000] Processed Task 857 (Type: CONVERT)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000edd8000] Processed Task 858 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Error] [Thread 0x70000ee5b000] Processing task 850 failed, retry #1
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f067000] Processed Task 874 (Type: EMAIL)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000efe4000] Processed Task 876 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f1f0000] Processed Task 873 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Error] [Thread 0x70000eede000] Processing task 879 failed, retry #1
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f16d000] Processed Task 882 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000edd8000] Processed Task 888 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000ee5b000] Processed Task 889 (Type: EMAIL)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f0ea000] Processed Task 886 (Type: EMAIL)
+[2026-02-02 17:14:07] [Error] [Thread 0x70000ed55000] Processing task 883 failed, retry #1
+[2026-02-02 17:14:07] [Error] [Thread 0x70000ef61000] Processing task 885 failed, retry #1
+[2026-02-02 17:14:07] [Info] [Thread 0x70000efe4000] Processed Task 906 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f1f0000] Processed Task 907 (Type: EMAIL)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000eede000] Processed Task 909 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f067000] Processed Task 902 (Type: CONVERT)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000edd8000] Processed Task 912 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000ee5b000] Processed Task 914 (Type: CONVERT)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000ef61000] Processed Task 920 (Type: CONVERT)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000ed55000] Processed Task 919 (Type: EMAIL)
+[2026-02-02 17:14:07] [Error] [Thread 0x70000f0ea000] Processing task 915 failed, retry #1
+[2026-02-02 17:14:07] [Error] [Thread 0x70000f16d000] Processing task 913 failed, retry #1
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f1f0000] Processed Task 935 (Type: CONVERT)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000efe4000] Processed Task 933 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000eede000] Processed Task 937 (Type: EMAIL)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f067000] Processed Task 938 (Type: CONVERT)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000ee5b000] Processed Task 942 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000ed55000] Processed Task 945 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f16d000] Processed Task 948 (Type: UPLOAD)
+[2026-02-02 17:14:07] [Info] [Thread 0x70000f0ea000] Processed Task 947 (Type: CONVERT)
+[2026-02-02 17:14:07] [Error] [Thread 0x70000edd8000] Processing task 940 failed, retry #1
+[2026-02-02 17:14:07] [Error] [Thread 0x70000ef61000] Processing task 943 failed, retry #1
+[2026-02-02 17:14:08] [Info] [Thread 0x70000f067000] Processed Task 966 (Type: UPLOAD)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000f1f0000] Processed Task 962 (Type: CONVERT)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000eede000] Processed Task 965 (Type: CONVERT)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000efe4000] Processed Task 964 (Type: EMAIL)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000ee5b000] Processed Task 970 (Type: EMAIL)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000f16d000] Processed Task 974 (Type: CONVERT)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000ed55000] Processed Task 971 (Type: CONVERT)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000ef61000] Processed Task 978 (Type: UPLOAD)
+[2026-02-02 17:14:08] [Error] [Thread 0x70000f0ea000] Processing task 975 failed, retry #1
+[2026-02-02 17:14:08] [Error] [Thread 0x70000edd8000] Processing task 977 failed, retry #1
+[2026-02-02 17:14:08] [Info] [Thread 0x70000f1f0000] Processed Task 994 (Type: EMAIL)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000f067000] Processed Task 992 (Type: CONVERT)
+[2026-02-02 17:14:08] [Error] [Thread 0x70000eede000] Processing task 995 failed, retry #1
+[2026-02-02 17:14:08] [Error] [Thread 0x70000efe4000] Processing task 996 failed, retry #1
+[2026-02-02 17:14:08] [Info] [Thread 0x70000ee5b000] Processed Task 1000 (Type: EMAIL)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000ed55000] Processed Task 3 (Type: UPLOAD)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000f16d000] Processed Task 5 (Type: CONVERT)
+[2026-02-02 17:14:08] [Error] [Thread 0x70000ef61000] Processing task 4 failed, retry #1
+[2026-02-02 17:14:08] [Error] [Thread 0x70000f0ea000] Processing task 7 failed, retry #1
+[2026-02-02 17:14:08] [Error] [Thread 0x70000edd8000] Processing task 8 failed, retry #1
+[2026-02-02 17:14:08] [Info] [Thread 0x70000f1f0000] Processed Task 10 (Type: EMAIL)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000f067000] Processed Task 21 (Type: UPLOAD)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000eede000] Processed Task 40 (Type: EMAIL)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000efe4000] Processed Task 49 (Type: EMAIL)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000ee5b000] Processed Task 35 (Type: CONVERT)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000f16d000] Processed Task 44 (Type: CONVERT)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000edd8000] Processed Task 83 (Type: CONVERT)
+[2026-02-02 17:14:08] [Error] [Thread 0x70000f0ea000] Processing task 70 failed, retry #2
+[2026-02-02 17:14:08] [Error] [Thread 0x70000ed55000] Processing task 57 failed, retry #2
+[2026-02-02 17:14:08] [Error] [Thread 0x70000ef61000] Processing task 69 failed, retry #2
+[2026-02-02 17:14:08] [Info] [Thread 0x70000f1f0000] Processed Task 121 (Type: EMAIL)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000f067000] Processed Task 135 (Type: UPLOAD)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000eede000] Processed Task 129 (Type: UPLOAD)
+[2026-02-02 17:14:08] [Error] [Thread 0x70000efe4000] Processing task 141 failed, retry #2
+[2026-02-02 17:14:08] [Info] [Thread 0x70000ee5b000] Processed Task 146 (Type: CONVERT)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000edd8000] Processed Task 149 (Type: CONVERT)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000f16d000] Processed Task 148 (Type: EMAIL)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000ed55000] Processed Task 153 (Type: UPLOAD)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000f0ea000] Processed Task 161 (Type: CONVERT)
+[2026-02-02 17:14:08] [Info] [Thread 0x70000ef61000] Processed Task 166 (Type: EMAIL)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000eede000] Processed Task 214 (Type: EMAIL)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000f067000] Processed Task 225 (Type: UPLOAD)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000f1f0000] Processed Task 209 (Type: CONVERT)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000efe4000] Processed Task 220 (Type: EMAIL)
+[2026-02-02 17:14:09] [Error] [Thread 0x70000ee5b000] Processing task 230 failed, retry #2
+[2026-02-02 17:14:09] [Info] [Thread 0x70000edd8000] Processed Task 234 (Type: UPLOAD)
+[2026-02-02 17:14:09] [Error] [Thread 0x70000f16d000] Processing task 237 failed, retry #2
+[2026-02-02 17:14:09] [Info] [Thread 0x70000ed55000] Processed Task 247 (Type: EMAIL)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000ef61000] Processed Task 248 (Type: CONVERT)
+[2026-02-02 17:14:09] [Error] [Thread 0x70000f0ea000] Processing task 246 failed, retry #2
+[2026-02-02 17:14:09] [Info] [Thread 0x70000f1f0000] Processed Task 296 (Type: CONVERT)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000efe4000] Processed Task 292 (Type: EMAIL)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000eede000] Processed Task 288 (Type: UPLOAD)
+[2026-02-02 17:14:09] [Error] [Thread 0x70000f067000] Processing task 293 failed, retry #2
+[2026-02-02 17:14:09] [Info] [Thread 0x70000ee5b000] Processed Task 310 (Type: EMAIL)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000edd8000] Processed Task 311 (Type: CONVERT)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000f16d000] Processed Task 330 (Type: UPLOAD)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000ed55000] Processed Task 332 (Type: CONVERT)
+[2026-02-02 17:14:09] [Error] [Thread 0x70000ef61000] Processing task 342 failed, retry #2
+[2026-02-02 17:14:09] [Info] [Thread 0x70000f0ea000] Processed Task 357 (Type: UPLOAD)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000f1f0000] Processed Task 399 (Type: UPLOAD)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000eede000] Processed Task 404 (Type: CONVERT)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000efe4000] Processed Task 400 (Type: EMAIL)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000f067000] Processed Task 405 (Type: UPLOAD)
+[2026-02-02 17:14:09] [Error] [Thread 0x70000ee5b000] Processing task 409 failed, retry #2
+[2026-02-02 17:14:09] [Info] [Thread 0x70000edd8000] Processed Task 419 (Type: CONVERT)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000f16d000] Processed Task 436 (Type: EMAIL)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000ef61000] Processed Task 442 (Type: EMAIL)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000ed55000] Processed Task 437 (Type: CONVERT)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000f0ea000] Processed Task 449 (Type: CONVERT)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000efe4000] Processed Task 506 (Type: CONVERT)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000f067000] Processed Task 527 (Type: CONVERT)
+[2026-02-02 17:14:09] [Error] [Thread 0x70000f1f0000] Processing task 504 failed, retry #2
+[2026-02-02 17:14:09] [Info] [Thread 0x70000ee5b000] Processed Task 528 (Type: UPLOAD)
+[2026-02-02 17:14:09] [Error] [Thread 0x70000eede000] Processing task 510 failed, retry #2
+[2026-02-02 17:14:09] [Info] [Thread 0x70000edd8000] Processed Task 522 (Type: UPLOAD)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000f16d000] Processed Task 513 (Type: UPLOAD)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000f0ea000] Processed Task 533 (Type: CONVERT)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000ef61000] Processed Task 534 (Type: UPLOAD)
+[2026-02-02 17:14:09] [Info] [Thread 0x70000ed55000] Processed Task 537 (Type: UPLOAD)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000efe4000] Processed Task 596 (Type: CONVERT)
+[2026-02-02 17:14:10] [Error] [Thread 0x70000f067000] Processing task 599 failed, retry #2
+[2026-02-02 17:14:10] [Info] [Thread 0x70000ee5b000] Processed Task 602 (Type: CONVERT)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000f1f0000] Processed Task 601 (Type: EMAIL)
+[2026-02-02 17:14:10] [Error] [Thread 0x70000eede000] Processing task 611 failed, retry #2
+[2026-02-02 17:14:10] [Info] [Thread 0x70000edd8000] Processed Task 617 (Type: CONVERT)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000f16d000] Processed Task 621 (Type: UPLOAD)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000ef61000] Processed Task 632 (Type: CONVERT)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000ed55000] Processed Task 639 (Type: UPLOAD)
+[2026-02-02 17:14:10] [Error] [Thread 0x70000f0ea000] Processing task 628 failed, retry #2
+[2026-02-02 17:14:10] [Info] [Thread 0x70000f067000] Processed Task 673 (Type: EMAIL)
+[2026-02-02 17:14:10] [Error] [Thread 0x70000efe4000] Processing task 668 failed, retry #2
+[2026-02-02 17:14:10] [Info] [Thread 0x70000f1f0000] Processed Task 697 (Type: EMAIL)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000ee5b000] Processed Task 688 (Type: EMAIL)
+[2026-02-02 17:14:10] [Error] [Thread 0x70000eede000] Processing task 693 failed, retry #2
+[2026-02-02 17:14:10] [Info] [Thread 0x70000f16d000] Processed Task 718 (Type: EMAIL)
+[2026-02-02 17:14:10] [Error] [Thread 0x70000edd8000] Processing task 708 failed, retry #2
+[2026-02-02 17:14:10] [Info] [Thread 0x70000ef61000] Processed Task 721 (Type: EMAIL)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000ed55000] Processed Task 723 (Type: UPLOAD)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000f0ea000] Processed Task 728 (Type: CONVERT)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000efe4000] Processed Task 775 (Type: EMAIL)
+[2026-02-02 17:14:10] [Error] [Thread 0x70000f067000] Processing task 777 failed, retry #2
+[2026-02-02 17:14:10] [Info] [Thread 0x70000ee5b000] Processed Task 787 (Type: EMAIL)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000f1f0000] Processed Task 781 (Type: EMAIL)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000eede000] Processed Task 800 (Type: CONVERT)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000f16d000] Processed Task 794 (Type: CONVERT)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000edd8000] Processed Task 804 (Type: UPLOAD)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000ed55000] Processed Task 825 (Type: UPLOAD)
+[2026-02-02 17:14:10] [Error] [Thread 0x70000ef61000] Processing task 806 failed, retry #2
+[2026-02-02 17:14:10] [Error] [Thread 0x70000f0ea000] Processing task 823 failed, retry #2
+[2026-02-02 17:14:10] [Info] [Thread 0x70000f067000] Processed Task 867 (Type: UPLOAD)
+[2026-02-02 17:14:10] [Error] [Thread 0x70000efe4000] Processing task 863 failed, retry #2
+[2026-02-02 17:14:10] [Info] [Thread 0x70000ee5b000] Processed Task 872 (Type: CONVERT)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000f1f0000] Processed Task 879 (Type: UPLOAD)
+[2026-02-02 17:14:10] [Error] [Thread 0x70000eede000] Processing task 884 failed, retry #2
+[2026-02-02 17:14:10] [Info] [Thread 0x70000edd8000] Processed Task 897 (Type: UPLOAD)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000f16d000] Processed Task 894 (Type: UPLOAD)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000ed55000] Processed Task 899 (Type: CONVERT)
+[2026-02-02 17:14:10] [Info] [Thread 0x70000ef61000] Processed Task 915 (Type: UPLOAD)
+[2026-02-02 17:14:10] [Error] [Thread 0x70000f0ea000] Processing task 916 failed, retry #2
+[2026-02-02 17:14:11] [Info] [Thread 0x70000f067000] Processed Task 958 (Type: EMAIL)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000efe4000] Processed Task 968 (Type: CONVERT)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000f1f0000] Processed Task 980 (Type: CONVERT)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000ee5b000] Processed Task 975 (Type: UPLOAD)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000eede000] Processed Task 989 (Type: CONVERT)
+[2026-02-02 17:14:11] [Error] [Thread 0x70000f16d000] Processing task 997 failed, retry #2
+[2026-02-02 17:14:11] [Error] [Thread 0x70000edd8000] Processing task 998 failed, retry #2
+[2026-02-02 17:14:11] [Info] [Thread 0x70000ed55000] Processed Task 996 (Type: UPLOAD)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000ef61000] Processed Task 8 (Type: CONVERT)
+[2026-02-02 17:14:11] [Error] [Thread 0x70000f0ea000] Processing task 11 failed, retry #2
+[2026-02-02 17:14:11] [Info] [Thread 0x70000efe4000] Processed Task 115 (Type: EMAIL)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000f067000] Processed Task 88 (Type: EMAIL)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000eede000] Processed Task 167 (Type: CONVERT)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000f1f0000] Processed Task 132 (Type: UPLOAD)
+[2026-02-02 17:14:11] [Error] [Thread 0x70000ee5b000] Processing task 150 failed, retry #3
+[2026-02-02 17:14:11] [Info] [Thread 0x70000f16d000] Processed Task 182 (Type: CONVERT)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000edd8000] Processed Task 223 (Type: EMAIL)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000ed55000] Processed Task 215 (Type: CONVERT)
+[2026-02-02 17:14:11] [Error] [Thread 0x70000f0ea000] Processing task 255 failed, retry #3
+[2026-02-02 17:14:11] [Error] [Thread 0x70000ef61000] Processing task 237 failed, retry #3
+[2026-02-02 17:14:11] [Error] [Thread 0x70000efe4000] Processing task 362 failed, retry #3
+[2026-02-02 17:14:11] [Error] [Thread 0x70000f067000] Processing task 390 failed, retry #3
+[2026-02-02 17:14:11] [Info] [Thread 0x70000eede000] Processed Task 422 (Type: CONVERT)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000f1f0000] Processed Task 450 (Type: UPLOAD)
+[2026-02-02 17:14:11] [Error] [Thread 0x70000ee5b000] Processing task 466 failed, retry #3
+[2026-02-02 17:14:11] [Info] [Thread 0x70000edd8000] Processed Task 507 (Type: UPLOAD)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000f16d000] Processed Task 510 (Type: UPLOAD)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000ed55000] Processed Task 509 (Type: CONVERT)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000ef61000] Processed Task 571 (Type: EMAIL)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000f0ea000] Processed Task 544 (Type: EMAIL)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000f067000] Processed Task 668 (Type: CONVERT)
+[2026-02-02 17:14:11] [Error] [Thread 0x70000efe4000] Processing task 665 failed, retry #3
+[2026-02-02 17:14:11] [Error] [Thread 0x70000eede000] Processing task 695 failed, retry #3
+[2026-02-02 17:14:11] [Error] [Thread 0x70000f1f0000] Processing task 708 failed, retry #3
+[2026-02-02 17:14:11] [Error] [Thread 0x70000ee5b000] Processing task 757 failed, retry #3
+[2026-02-02 17:14:11] [Info] [Thread 0x70000edd8000] Processed Task 745 (Type: EMAIL)
+[2026-02-02 17:14:11] [Error] [Thread 0x70000f16d000] Processing task 761 failed, retry #3
+[2026-02-02 17:14:11] [Info] [Thread 0x70000ed55000] Processed Task 782 (Type: CONVERT)
+[2026-02-02 17:14:11] [Info] [Thread 0x70000f0ea000] Processed Task 847 (Type: EMAIL)
+[2026-02-02 17:14:11] [Error] [Thread 0x70000ef61000] Processing task 812 failed, retry #3
+[2026-02-02 17:14:12] [Info] [Thread 0x70000efe4000] Processed Task 4 (Type: EMAIL)
+[2026-02-02 17:14:12] [Error] [Thread 0x70000f067000] Processing task 998 failed, retry #3
+[2026-02-02 17:14:12] [Info] [Thread 0x70000edd8000] Processed Task 255 (Type: UPLOAD)
+[2026-02-02 17:14:12] [Info] [Thread 0x70000ee5b000] Processed Task 150 (Type: UPLOAD)
+[2026-02-02 17:14:12] [Error] [Thread 0x70000eede000] Task 69 exceeded retry limit, sending to dead letter queue.
+[2026-02-02 17:14:12] [Error] [Thread 0x70000f1f0000] Task 130 exceeded retry limit, sending to dead letter queue.
+[2026-02-02 17:14:12] [Error] [Thread 0x70000f16d000] Task 246 exceeded retry limit, sending to dead letter queue.
+[2026-02-02 17:14:12] [Info] [Thread 0x70000ed55000] Processed Task 259 (Type: EMAIL)
+[2026-02-02 17:14:12] [Info] [Thread 0x70000f0ea000] Processed Task 287 (Type: CONVERT)
+[2026-02-02 17:14:12] [Info] [Thread 0x70000ef61000] Processed Task 492 (Type: UPLOAD)
+[2026-02-02 17:14:12] [Info] [Thread 0x70000f067000] Processed Task 998 (Type: CONVERT)
+[2026-02-02 17:14:12] [Error] [Thread 0x70000efe4000] Task 941 exceeded retry limit, sending to dead letter queue.
+Shutting down gracefully...
+[2026-02-02 17:14:17] [Info] [Thread 0x70000ed55000] Thread shutting down.
+[2026-02-02 17:14:17] [Info] [Thread 0x70000edd8000] Thread shutting down.
+[2026-02-02 17:14:17] [Info] [Thread 0x70000eede000] Thread shutting down.
+[2026-02-02 17:14:17] [Info] [Thread 0x70000f1f0000] Thread shutting down.
+[2026-02-02 17:14:17] [Info] [Thread 0x70000f0ea000] Thread shutting down.
+[2026-02-02 17:14:17] [Info] [Thread 0x70000ee5b000] Thread shutting down.
+[2026-02-02 17:14:17] [Info] [Thread 0x70000ef61000] Thread shutting down.
+[2026-02-02 17:14:17] [Info] [Thread 0x70000f16d000] Thread shutting down.
+[2026-02-02 17:14:17] [Info] [Thread 0x70000efe4000] Thread shutting down.
+[2026-02-02 17:14:17] [Info] [Thread 0x70000f067000] Thread shutting down.

@@ -1,0 +1,24 @@
+Connected to Redis!
+[2026-01-29 17:46:33] [Info] [Thread 0x70000a58[2026-01-29 17:46:33] [Info] [Thread 0x700007591000] Thread shutting down.
+[2026-01-29 17:46:33] [Info] [Thread 0x700007697000] Thread shutting down.
+[2026-01-29 17:46:33] [Info] [Thread 0x7000071fc000] Processed Task 29 (Type: CONVERT)
+[2026-01-29 17:46:33] [Info] [Thread 0x700007[2026-01-29 17:46:33] [Info] [Thread 0x700004198000] Thread shutting down.
+[2026-01-29 17:46:33] [Info] [Thread 0x70000400f000] Processed Task 50 (Type: CONVERT)
+[2026-01-29 17:46:33] [Info] [Thread 0x70000400f000] Thread shutting down.
+[2026-01-29 17:46:33] [Info] [Thread 0x700004115000] Processed Task 52 (Type: EMAIL)
+[2026-01-29 17:46:33] [Info] [Thread 0x700003f8c000] Processed Task 49 (Type: EMAIL)
+[2026-01-29 17:46:33] [Info] [Thread 0x700003e86000] Processed Task 47 (Type: CONVERT)
+[2026-01-29 17:46:33] [Info] [Thread 0x700004115000] Thread shutting down.
+[2026-01-29 17:46:33] [Info] [Thread 0x700003f8c000] Thread shutting down.
+[2026-01-29 17:46:33] [Info] [Thread 0x700003e86000] Thread shutting down.
+[2026-01-29 17:46:33] [Info] [Thread 0x700003cfd000] Processed Task 45 (Type: UPLOAD)
+[2026-01-29 17:46:33] [Info] [Thread 0x700003cfd000] Thread shutting down.
+[2026-01-29 17:46:33] [Error] [Thread 0x700003f09000] Processing task 48 failed, retry #1
+[2026-01-29 17:46:33] [Error] [Thread 0x700003d80000] Processing task 34 failed, retry #1
+[2026-01-29 17:46:33] [Error] [Thread 0x700003e03000] Processing task 46 failed, retry #1
+[2026-01-29 17:46:33] [Info] [Thread 0x700003f09000] Thread shutting down.
+[2026-01-29 17:46:33] [Info] [Thread 0x700003d80000] Thread shutting down.
+[2026-01-29 17:46:33] [Info] [Thread 0x700003e03000] Thread shutting down.
+[2026-01-29 17:46:33] [Error] [Thread 0x700004092000] Processing task 51 failed, retry #1
+[2026-01-29 17:46:33] [Info] [Thread 0x700004092000] Thread shutting down.
+utting down.
