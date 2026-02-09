@@ -21,6 +21,8 @@ int main() {
         cout << " COMPLETED:   " << rh.get_completed_count("completed_tasks") << " (Unique)" << endl;
         cout << " DEAD LETTER: " << rh.get_queue_size(q + ":dead_letter") << endl;
         cout << "========================================" << endl;
+        cout << " AVG LATENCY: " << rh.get_avg_latency("total_latency_ms", "latency_count") << endl;
+        cout << "========================================" << endl;
         cout << " (Press Ctrl+C to exit) " << endl;
 
         this_thread::sleep_for(chrono::seconds(1));

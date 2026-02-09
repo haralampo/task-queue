@@ -9,6 +9,7 @@
 
 using namespace std;
 using namespace sw::redis;
+using namespace std::chrono;
 
 string INFO = "Info";
 string ERROR = "Error";
@@ -104,6 +105,24 @@ long long RedisHandler::get_completed_count(const string& set_name) {
     return _redis.scard(set_name);
 }
 
+void RedisHandler::add_latency(const string& total_latency_set, const string& latency_count_set, long long increment) {
+    auto tx = _redis.transaction();
+    tx.incrby(total_latency_set, increment);
+    tx.incr(latency_count_set);
+    tx.exec();
+}
+
+double RedisHandler::get_avg_latency(const string& total_latency_set, const string& latency_count_set) {
+    auto total_ms_str = _redis.get(total_latency_set);
+    auto count_str = _redis.get(latency_count_set);
+
+    long long total_ms = total_ms_str ? stoll(*total_ms_str) : 0;
+    long long count = count_str ? stoll(*count_str) : 0;
+
+    if (count == 0) return 0; // Prevent division by zero
+    return static_cast<double>(total_ms / count);
+}
+
 WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const std::string& queue_name) : _handler(connection_str), _queue(queue_name) {
     string pending_q = queue_name;
     string processing_q = queue_name + ":processing";
@@ -142,6 +161,14 @@ WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const
                         else {
                             // successfully processed, remove task from processing queue
                             _handler.acknowledge_task(processing_q, raw_data);
+
+                            // log latency
+                            auto now = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+                            long long latency = now - task.created_at;
+                            log("Task " + task.id + " finished in " + to_string(latency) + "ms", INFO);
+
+                            _handler.add_latency("total_latency_ms", "latency_count", latency);
+
                             _handler.mark_completed("completed_tasks", task.id);
                             log("Processed Task " + task.id + " (Type: " + task.type + ")", INFO);
                         }

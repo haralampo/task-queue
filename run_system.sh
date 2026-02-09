@@ -1,7 +1,7 @@
 #!/bin/bash
 trap 'kill 0' EXIT
 
-redis-cli DEL queue queue:processing queue:dead_letter completed_tasks
+redis-cli DEL queue queue:processing queue:dead_letter completed_tasks total_latency_ms latency_count
 
 echo "Compiling project..."
 cd build && cmake .. && make && cd ..
@@ -10,7 +10,7 @@ cd build && cmake .. && make && cd ..
 sleep 1
 
 echo "Starting Producer..."
-./build/producer  # Run this FIRST
+./build/producer
 
 echo "Launching 10 consumers..."
 for i in {1..3}; do

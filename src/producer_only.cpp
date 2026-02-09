@@ -3,6 +3,7 @@
 
 using namespace std;
 using namespace sw::redis;
+using namespace std::chrono;
 
 int main() {
     // Connect to Redis
@@ -22,7 +23,8 @@ int main() {
             type = "EMAIL";
         }
 
-        Task task{to_string(i + 1), type, "This is a payload."};
+        long long now = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+        Task task{to_string(i + 1), type, "Payload", 0, now};
         nlohmann::json j = task;
         string s = j.dump();
         redis_handler.push_task(queue, s);

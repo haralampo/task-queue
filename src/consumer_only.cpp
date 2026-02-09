@@ -16,7 +16,7 @@ int main() {
     std::signal(SIGINT, signal_handler);
     std::signal(SIGTERM, signal_handler);
 
-    WorkerPool workerPool("tcp://127.0.0.1:6379?pool_size=11", 10, "queue");
+    WorkerPool workerPool("tcp://127.0.0.1:6379?pool_size=11", 30, "queue");
     
     std::cout << "Consumer running. Waiting for tasks..." << std::endl;
 

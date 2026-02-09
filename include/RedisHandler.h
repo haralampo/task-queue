@@ -25,6 +25,8 @@ public:
     long long get_queue_size(const std::string& name);
     void mark_completed(const std::string& set_name, const std::string& task_id);
     long long get_completed_count(const std::string& set_name);
+    void add_latency(const std::string& total_latency_set, const std::string& latency_count_set, long long increment);
+    double get_avg_latency(const std::string& total_latency_set, const std::string& latency_count_set);
 
 private:
     sw::redis::Redis _redis;
