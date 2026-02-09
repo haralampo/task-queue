@@ -96,6 +96,14 @@ long long RedisHandler::get_queue_size(const string& name) {
     return _redis.llen(name);
 }
 
+void RedisHandler::mark_completed(const string& set_name, const string& task_id) {
+    _redis.sadd(set_name, task_id);
+}
+
+long long RedisHandler::get_completed_count(const string& set_name) {
+    return _redis.scard(set_name);
+}
+
 WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const std::string& queue_name) : _handler(connection_str), _queue(queue_name) {
     string pending_q = queue_name;
     string processing_q = queue_name + ":processing";
@@ -134,6 +142,7 @@ WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const
                         else {
                             // successfully processed, remove task from processing queue
                             _handler.acknowledge_task(processing_q, raw_data);
+                            _handler.mark_completed("completed_tasks", task.id);
                             log("Processed Task " + task.id + " (Type: " + task.type + ")", INFO);
                         }
                     }

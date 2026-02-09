@@ -16,8 +16,9 @@ int main() {
         cout << "========================================" << endl;
         cout << "       REDIS TASK QUEUE MONITOR         " << endl;
         cout << "========================================" << endl;
-        cout << " PENDING:    " << rh.get_queue_size(q) << endl;
-        cout << " PROCESSING: " << rh.get_queue_size(q + ":processing") << endl;
+        cout << " PENDING:     " << rh.get_queue_size(q) << endl;
+        cout << " PROCESSING:  " << rh.get_queue_size(q + ":processing") << endl;
+        cout << " COMPLETED:   " << rh.get_completed_count("completed_tasks") << " (Unique)" << endl;
         cout << " DEAD LETTER: " << rh.get_queue_size(q + ":dead_letter") << endl;
         cout << "========================================" << endl;
         cout << " (Press Ctrl+C to exit) " << endl;

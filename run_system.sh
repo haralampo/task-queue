@@ -1,7 +1,7 @@
 #!/bin/bash
 trap 'kill 0' EXIT
 
-redis-cli DEL queue queue:processing queue:dead_letter
+redis-cli DEL queue queue:processing queue:dead_letter completed_tasks
 
 echo "Compiling project..."
 cd build && cmake .. && make && cd ..

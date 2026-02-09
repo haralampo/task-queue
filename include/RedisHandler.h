@@ -23,6 +23,8 @@ public:
     void move_to_dlq(const std::string& proc_queue, const std::string& dlq_queue, const std::string& task_data);
     void retry_task(const std::string& proc_queue, const std::string& pending_q, const std::string& old_data, const std::string& new_data);
     long long get_queue_size(const std::string& name);
+    void mark_completed(const std::string& set_name, const std::string& task_id);
+    long long get_completed_count(const std::string& set_name);
 
 private:
     sw::redis::Redis _redis;
