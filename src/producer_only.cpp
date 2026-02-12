@@ -5,14 +5,22 @@ using namespace std;
 using namespace sw::redis;
 using namespace std::chrono;
 
-int main() {
+int main(int argc, char* argv[]) {
+
+    if (argc < 2) {
+        cerr << "Usage: " << argv[0] << " <count>" << endl;
+        return 1;
+    }
+
     // Connect to Redis
     // Push task to queue
     RedisHandler redis_handler("tcp://127.0.0.1:6379");
     string queue = "queue";
     string type = "EMAIL";
 
-    for (int i = 0; i < 1000; i++) {
+    int num_tasks = stoi(argv[1]);
+
+    for (int i = 0; i < num_tasks - 1; i++) {
         if (i % 3 == 1) {
             type = "CONVERT";
         }

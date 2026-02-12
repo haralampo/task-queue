@@ -11,12 +11,20 @@ void signal_handler(int signal) {
     keep_running = false;
 }
 
-int main() {
+int main(int argc, char* argv[]) {
+
+    if (argc < 2) {
+        cerr << "Usage: " << argv[0] << " <count>" << endl;
+        return 1;
+    }
+
     // Catch Ctrl+C (SIGINT) and script's 'kill' (SIGTERM)
     std::signal(SIGINT, signal_handler);
     std::signal(SIGTERM, signal_handler);
 
-    WorkerPool workerPool("tcp://127.0.0.1:6379?pool_size=11", 30, "queue");
+    int num_threads = stoi(argv[1]);
+
+    WorkerPool workerPool("tcp://127.0.0.1:6379?pool_size=" + to_string(num_threads + 2), num_threads, "queue");
     
     std::cout << "Consumer running. Waiting for tasks..." << std::endl;
 
