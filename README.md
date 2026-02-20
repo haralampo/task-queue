@@ -107,8 +107,8 @@ In a separate terminal, send tasks to the queue:
 The included benchmark script automates the setup, execution, and metric collection:
 
 ```bash
-chmod +x benchmark.sh
-./benchmark.sh
+chmod +x run_benchmark.sh
+./run_benchmark.sh
 
 ```
 
