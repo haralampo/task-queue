@@ -1,4 +1,4 @@
-
+#include <atomic>
 #include <cmath>
 #include <ctime>
 #include <memory>

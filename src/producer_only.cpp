@@ -14,13 +14,15 @@ int main(int argc, char* argv[]) {
 
     // Connect to Redis
     // Push task to queue
-    RedisHandler redis_handler("tcp://127.0.0.1:6379");
+    const char* redis_env = std::getenv("REDIS_URL");
+    std::string connection_str = redis_env ? redis_env : "tcp://127.0.0.1:6379";
+    RedisHandler redis_handler(connection_str);
     string queue = "queue";
     string type = "EMAIL";
 
     int num_tasks = stoi(argv[1]);
 
-    for (int i = 0; i < num_tasks - 1; i++) {
+    for (int i = 0; i < num_tasks; i++) {
         if (i % 3 == 1) {
             type = "CONVERT";
         }
@@ -36,6 +38,8 @@ int main(int argc, char* argv[]) {
         nlohmann::json j = task;
         string s = j.dump();
         redis_handler.push_task(queue, s);
+        cout << "Sent Task " << i + 1 << endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
     redis_handler.push_task(queue, "Hi, I'm an invalid JSON.");
 }

@@ -24,7 +24,10 @@ int main(int argc, char* argv[]) {
 
     int num_threads = stoi(argv[1]);
 
-    WorkerPool workerPool("tcp://127.0.0.1:6379?pool_size=" + to_string(num_threads + 2), num_threads, "queue");
+    const char* redis_env = std::getenv("REDIS_URL");
+    string base_url = redis_env ? redis_env : "tcp://127.0.0.1:6379";
+    string connection_str = base_url + "?pool_size=" + to_string(num_threads + 2);
+    WorkerPool workerPool(connection_str, num_threads, "queue");
     
     std::cout << "Consumer running. Waiting for tasks..." << std::endl;
 

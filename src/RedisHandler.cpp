@@ -146,7 +146,7 @@ WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const
                         this_thread::sleep_for(chrono::milliseconds(10));
 
                         int random_num = distrib(gen);
-                        if (random_num % 3 == 0) {
+                        if (random_num % 10 == 0) {
                             if (task.retries < 3) {
                                 task.retries++;
                                 string retried_data = nlohmann::json(task).dump();

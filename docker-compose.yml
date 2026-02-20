@@ -1,0 +1,23 @@
+services:
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+
+  worker:
+    build: .
+    command: ["./consumer", "5"] # Number of threads
+    depends_on:
+      - redis
+    environment:
+      - REDIS_URL=tcp://redis:6379
+    deploy:
+      replicas: 3 # This is the "Horizontal Scaling" magic
+
+  producer:
+    build: .
+    command: ["./producer", "100"] # Number of tasks
+    depends_on:
+      - redis
+    environment:
+      - REDIS_URL=tcp://redis:6379

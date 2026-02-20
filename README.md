@@ -119,7 +119,3 @@ The script tests various thread counts (5, 10, 20, 40) and reports **Tasks Per S
 * **Zombie Recovery:** On startup, the `WorkerPool` calls `recover_tasks` to move orphaned items from the `:processing` list back to the main queue.
 * **Thread Safety:** All console logging and shared state transitions are protected by `std::mutex` and `std::lock_guard`.
 * **At-Least-Once:** Tasks are only "Acknowledge" (removed from Redis) after successful processing logic is completed.
-
----
-
-**Would you like me to help you create a `LICENSE` file or a `CONTRIBUTING.md` to make this repo look even more professional?**
