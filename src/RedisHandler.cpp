@@ -120,7 +120,7 @@ double RedisHandler::get_avg_latency(const string& total_latency_set, const stri
     long long count = count_str ? stoll(*count_str) : 0;
 
     if (count == 0) return 0; // Prevent division by zero
-    return static_cast<double>(total_ms / count);
+    return static_cast<double>(total_ms) / count;
 }
 
 WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const std::string& queue_name) : _handler(connection_str), _queue(queue_name) {
