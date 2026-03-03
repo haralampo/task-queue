@@ -143,7 +143,7 @@ WorkerPool::WorkerPool(const std::string& connection_str, int num_threads, const
                     if (nlohmann::json::accept(raw_data)) {
                         auto j = nlohmann::json::parse(raw_data);
                         Task task = j.get<Task>();
-                        this_thread::sleep_for(chrono::milliseconds(10));
+                        this_thread::sleep_for(chrono::milliseconds(500));
 
                         int random_num = distrib(gen);
                         if (random_num % 10 == 0) {

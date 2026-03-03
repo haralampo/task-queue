@@ -103,3 +103,8 @@ echo "  Average Task Latency:       ${AVG_LATENCY}ms"
 echo "  System Throughput:          ${throughput} tasks/sec"
 echo "------------------------------------------"
 echo "Total Tasks Accounted For:    $((UNIQUE_SUCCESS + DLQ_COUNT)) / $EXPECTED_TOTAL"
+
+# 8. Cleanup
+echo ""
+echo "--- Cleaning up containers ---"
+docker compose down
