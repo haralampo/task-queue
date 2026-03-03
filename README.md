@@ -10,7 +10,7 @@ The project demonstrates how a lightweight distributed job queue can be built us
 
 ---
 
-# Architecture Overview
+## Architecture Overview
 
 ```
 Producer
@@ -32,7 +32,7 @@ Worker Thread Pool
 
 ---
 
-# Tech Stack
+## Tech Stack
 
 **Language**
 - C++20
@@ -51,7 +51,7 @@ Worker Thread Pool
 
 ---
 
-# Architecture Overview
+## System Components
 
 The system consists of three main components.
 
@@ -89,13 +89,13 @@ Limiting the number of worker threads prevents excessive thread creation and con
 
 ---
 
-# Task Lifecycle
+## Task Lifecycle
 
 Tasks move through several states during their lifetime.
 
 ---
 
-## 1. Enqueue
+### 1. Enqueue
 
 The producer creates a task and pushes it into the Redis queue using `RPUSH`.
 
@@ -103,7 +103,7 @@ This records the work that needs to be processed without executing the task imme
 
 ---
 
-## 2. Claiming Work
+### 2. Claiming Work
 
 Workers claim tasks using Redis `BLMOVE`, which atomically moves an item from:
 
@@ -117,7 +117,7 @@ Using `BLMOVE` ensures the transfer between queues happens atomically. If a work
 
 ---
 
-## 3. Processing
+### 3. Processing
 
 Once claimed, the worker:
 
@@ -128,7 +128,7 @@ Once claimed, the worker:
 
 ---
 
-## 4. Retries
+### 4. Retries
 
 If task execution fails, the system retries the task up to three times.
 
@@ -138,7 +138,7 @@ This handles transient failures without losing work.
 
 ---
 
-## 5. Dead Letter Queue
+### 5. Dead Letter Queue
 
 Tasks are moved to a dead-letter queue when:
 
@@ -149,7 +149,7 @@ Separating failed tasks prevents a permanently broken task from blocking the que
 
 ---
 
-# Reliability Mechanisms
+## Reliability Mechanisms
 
 ### Atomic Queue Transitions
 
@@ -173,7 +173,7 @@ This means a task may run more than once, but it will not be silently lost.
 
 ---
 
-# Metrics
+## Metrics
 
 Workers record simple performance metrics:
 
@@ -185,7 +185,7 @@ Latency is measured from task creation time to completion. These metrics allow t
 
 ---
 
-# Project Structure
+## Project Hierarchy
 
 ```
 task-queue/
@@ -208,7 +208,7 @@ task-queue/
 
 ---
 
-# Building the Project
+## Building the Project
 
 Install Redis development dependencies if needed.
 
@@ -227,7 +227,7 @@ make
 
 ---
 
-# Running the System
+## Running the System
 
 ### Start Redis
 
@@ -259,11 +259,11 @@ This generates tasks and pushes them into the Redis queue.
 
 ---
 
-# Benchmarking and Scalability Testing
+## Benchmarking and Scalability Testing
 
 Two scripts are provided to evaluate system performance and scalability.
 
-## Workload Benchmark
+### Workload Benchmark
 
 The benchmark script runs a workload of tasks through the system and records performance metrics such as throughput and latency.
 
@@ -276,7 +276,7 @@ This script helps measure how quickly tasks are processed under a fixed worker c
 
 ---
 
-## Horizontal Scalability Test
+### Horizontal Scalability Test
 
 The `scale_test.sh` script evaluates how the system scales as the number of worker processes increases.
 
@@ -319,7 +319,7 @@ This experiment helps evaluate how effectively the system scales as additional w
 
 ---
 
-# Design Tradeoffs
+## Design Tradeoffs
 
 The system prioritizes reliability and simplicity.
 
@@ -337,6 +337,6 @@ A fixed pool simplifies resource management but limits maximum concurrency to th
 
 ---
 
-# Summary
+## Summary
 
 This project demonstrates how to build a reliable background job system using C++, Redis, and multithreading. It highlights practical queue design patterns such as atomic task claiming, retry logic, dead-letter queues, and crash recovery while remaining small enough to understand end-to-end.
