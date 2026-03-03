@@ -259,16 +259,63 @@ This generates tasks and pushes them into the Redis queue.
 
 ---
 
-# Benchmarking
+# Benchmarking and Scalability Testing
 
-The benchmark script runs experiments with different worker counts and records latency and throughput metrics.
+Two scripts are provided to evaluate system performance and scalability.
+
+## Workload Benchmark
+
+The benchmark script runs a workload of tasks through the system and records performance metrics such as throughput and latency.
 
 ```
 chmod +x scripts/benchmark.sh
 ./scripts/benchmark.sh
 ```
 
-These experiments help evaluate how the system scales with increasing concurrency.
+This script helps measure how quickly tasks are processed under a fixed worker configuration.
+
+---
+
+## Horizontal Scalability Test
+
+The `scale_test.sh` script evaluates how the system scales as the number of worker processes increases.
+
+For each worker configuration, the script:
+
+1. Resets the environment by restarting Redis and clearing all previous data.
+2. Launches a specified number of worker containers using Docker Compose.
+3. Runs a producer workload that enqueues a fixed number of tasks.
+4. Waits for the queue to fully drain.
+5. Collects performance metrics from Redis and Docker.
+
+The experiment is repeated with increasing worker counts:
+
+```
+1, 2, 4, 8, 12, 16
+```
+
+The following metrics are recorded for each run:
+
+- **Throughput** (tasks processed per second)
+- **Average task latency** (milliseconds)
+- **Total execution time**
+- **Aggregate worker CPU utilization**
+- **Redis CPU utilization**
+- **Scaling efficiency** (throughput relative to worker count)
+
+Results are written to a CSV file:
+
+```
+scalability_results.csv
+```
+
+Example format:
+
+```
+worker_count,throughput,avg_latency_ms,duration_s,worker_cpu_percent,redis_cpu_percent,scaling_efficiency
+```
+
+This experiment helps evaluate how effectively the system scales as additional worker processes are added.
 
 ---
 
