@@ -185,7 +185,7 @@ Latency is measured from task creation time to completion. These metrics allow t
 
 ---
 
-## Project Hierarchy
+## Project Structure
 
 ```
 task-queue/
