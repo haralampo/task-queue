@@ -73,19 +73,15 @@ Three queues are used:
 |------|--------|
 | `queue` | pending tasks waiting to be processed |
 | `queue:processing` | tasks currently claimed by workers |
-| `queue:dead_letter` | tasks that failed after retry attempts |
+| `queue:dead_letter` | tasks that failed after retry attempts, or are of invalid format |
 
-Redis is well suited for this role because list operations are atomic and support blocking operations that allow workers to efficiently wait for new work.
+Redis is well suited for this role because list operations are atomic and support blocking operations that allow workers to efficiently wait for new work instead of periodically polling.
 
 ---
 
 ### Worker Pool
 
-The consumer process launches a fixed pool of worker threads that continuously retrieve tasks from Redis and execute them concurrently.
-
-A thread pool is used to control concurrency and avoid the overhead of creating a new thread for each task. Worker threads are created once when the consumer starts and remain active for the lifetime of the process, repeatedly pulling tasks from the queue as they become available.
-
-Limiting the number of worker threads prevents excessive thread creation and context switching while still allowing multiple tasks to be processed in parallel.
+The consumer process launches a fixed pool of worker threads that remain active for the lifetime of the process, repeatedly pulling tasks from the queue as they become available. Limiting the number of worker threads reduces excessive context switching and improves CPU efficiency.
 
 ---
 
@@ -97,9 +93,7 @@ Tasks move through several states during their lifetime.
 
 ### 1. Enqueue
 
-The producer creates a task and pushes it into the Redis queue using `RPUSH`.
-
-This records the work that needs to be processed without executing the task immediately.
+The producer creates a task and pushes it into the Redis queue using `RPUSH`. This records the work that needs to be processed without executing the task immediately.
 
 ---
 
@@ -113,7 +107,7 @@ queue  →  queue:processing
 
 This operation blocks until work is available.
 
-Using `BLMOVE` ensures the transfer between queues happens atomically. If a worker crashes after claiming a task, the task still exists in the processing queue and can be recovered.
+Because `BLMOVE` performs the transfer atomically, a task will always exist in either the pending queue or the processing queue, even if a worker crashes during the operation.
 
 ---
 
@@ -121,20 +115,19 @@ Using `BLMOVE` ensures the transfer between queues happens atomically. If a work
 
 Once claimed, the worker:
 
-- parses the JSON payload
-- simulates work
-- measures processing latency
-- records completion metrics
+- Parses the JSON payload  
+  - If the payload is invalid, the task is moved to the dead-letter queue.
+- Simulates work  
+  - If processing fails and the retry count is less than 3, the retry counter is incremented and the task is returned to the pending queue.  
+  - If processing fails and the retry limit is exceeded, the task is moved to the dead-letter queue.
+- Measures processing latency
+- Records completion metrics
 
 ---
 
 ### 4. Retries
 
-If task execution fails, the system retries the task up to three times.
-
-The retry counter is incremented and the task is placed back into the main queue so another worker can attempt it.
-
-This handles transient failures without losing work.
+If task execution fails, the system retries the task up to three times. The retry counter is incremented and the task is placed back into the main queue so another worker can attempt it.
 
 ---
 
@@ -159,15 +152,13 @@ Redis `BLMOVE` ensures tasks are transferred between queues atomically. This pre
 
 ### Crash Recovery
 
-When the worker pool starts, it moves any leftover tasks in `queue:processing` back to the main queue.
-
-These tasks may have been interrupted by a crash or forced shutdown.
+When the worker pool starts, it moves any leftover tasks in `queue:processing` back to the main queue. These tasks may have been interrupted by a crash or forced shutdown.
 
 ---
 
 ### Delivery Guarantee
 
-The system provides **at-least-once task processing**. Tasks are acknowledged only after successful completion. If a worker crashes during execution, the task remains in the processing queue and will be retried.
+The system provides **at-least-once task processing**. Tasks are acknowledged only after successful completion. If a worker crashes after claiming a task, the task remains in `queue:processing` and is returned to the pending queue on the next startup via the recovery step, allowing it to be processed again.
 
 This means a task may run more than once, but it will not be silently lost.
 
@@ -178,8 +169,7 @@ This means a task may run more than once, but it will not be silently lost.
 Workers record simple performance metrics:
 
 - completed task count
-- total latency
-- latency samples
+- total accumulated latency
 
 Latency is measured from task creation time to completion. These metrics allow the system’s throughput and responsiveness to be evaluated during benchmarks.
 
@@ -197,10 +187,13 @@ task-queue/
 │
 ├── src/
 │   ├── RedisHandler.cpp
-│   └── main.cpp
+│   ├── main.cpp
+│   ├── producer_only.cpp
+│   └── consumer_only.cpp
 │
 ├── scripts/
-│   └── benchmark.sh
+│   ├── benchmark.sh
+│   └── scale_test.sh
 │
 ├── CMakeLists.txt
 └── docker-compose.yml
@@ -229,111 +222,172 @@ make
 
 ## Running the System
 
-### Start Redis
+You can run the system in *three ways*, depending on what you’re trying to do:
 
-```
+- *Locally (manual)*: best for development and debugging (fast iteration, direct control over the binaries).
+- *Locally (convenience script)*: best for quick one-command local runs.
+- *Docker Compose*: best for consistency and testing (reproducible environment, mirrors the benchmark scripts, easy scaling).
+
+> Note: if the binaries are already up to date, you can comment out the build step in `scripts/run_system.sh` to speed up repeated runs. Re-enable it after changing source files or build configuration.
+
+---
+
+### Option A: Run Locally (manual development / debugging)
+
+Use this when you want fast iteration, readable logs, and the ability to debug the C++ processes directly.
+
+1) *Start Redis locally*
+```bash
 redis-server
 ```
 
+2) *Optional: clear previous queue / metric state*
+```bash
+redis-cli DEL queue queue:processing queue:dead_letter completed_tasks total_latency_ms latency_count
+```
+
+This removes any leftover pending tasks, in-flight task markers, dead-letter entries, and metric counters from previous runs.
+
+3) *Build the project*
+```bash
+cd build
+cmake ..
+make
+cd ..
+```
+
+4) *Start the consumer (worker pool)*
+```bash
+./build/consumer 10
+```
+This launches one consumer process with a fixed pool of *10 worker threads* that continuously claim and process tasks.
+
+5) *Run the producer* (in a second terminal)
+```bash
+./build/producer 5000
+```
+This enqueues *5000 tasks* into Redis. The worker threads process them asynchronously.
+
 ---
 
-### Start Workers
+### Option B: Run Locally (convenience script)
 
-Launch the consumer with a specified number of worker threads.
+Use this when you want a one-command local run without manually starting each component.
 
+*Run:*
+```bash
+chmod +x scripts/run_system.sh
+./scripts/run_system.sh
 ```
-./consumer 10
-```
+
+This helper script builds the project, resets Redis state, starts the consumer, runs the producer, and waits for the *pending queue* to empty before exiting.
 
 ---
 
-### Produce Tasks
+### Option C: Run with Docker Compose (reproducible / benchmark-ready)
 
-In another terminal:
+Use this when you want a consistent environment, containerized Redis, and the ability to scale worker processes easily.
 
+1) *Build services*
+```bash
+docker compose build
 ```
-./producer 5000
+
+2) *Start Redis and workers*
+```bash
+docker compose up -d redis worker
 ```
 
-This generates tasks and pushes them into the Redis queue.
+3) *Run the producer workload*
+```bash
+docker compose run --rm -T producer ./producer 5000
+```
+
+4) *Stop everything*
+```bash
+docker compose down
+```
 
 ---
 
 ## Benchmarking and Scalability Testing
 
-Two scripts are provided to evaluate system performance and scalability.
+Two scripts are provided to evaluate performance. Both scripts run the system using *Docker Compose* so results are repeatable and easy to reproduce.
 
-### Workload Benchmark
+> Note: if the Docker images are already up to date, you can comment out the `docker compose build` step in the benchmark scripts to speed up repeated runs. Re-enable it after changing source files, Dockerfiles, or build configuration.
 
-The benchmark script runs a workload of tasks through the system and records performance metrics such as throughput and latency.
+---
 
-```
+### Workload Benchmark (`scripts/benchmark.sh`)
+
+This script runs a short deterministic test and produces a summary report plus logs.
+
+*Run:*
+```bash
 chmod +x scripts/benchmark.sh
 ./scripts/benchmark.sh
 ```
 
-This script helps measure how quickly tasks are processed under a fixed worker configuration.
+*Outputs:*
+- `logs/benchmark/producer.log` (producer output)
+- `logs/benchmark/worker.log` (worker logs)
+- `logs/benchmark/summary.txt` (printed summary report)
+
+The summary includes:
+- duration
+- unique tasks successful
+- retries attempted
+- DLQ count
+- average latency
+- throughput
+
+> Note: the script waits for the pending queue to empty, not for `queue:processing` to be empty. This avoids hanging if crashed workers leave stale in-flight entries behind.
 
 ---
 
-### Horizontal Scalability Test
+### Horizontal Scalability Test (`scripts/scale_test.sh`)
 
-The `scale_test.sh` script evaluates how the system scales as the number of worker processes increases.
+This script measures how throughput and latency change as the number of worker *containers* increases.
 
-For each worker configuration, the script:
-
-1. Resets the environment by restarting Redis and clearing all previous data.
-2. Launches a specified number of worker containers using Docker Compose.
-3. Runs a producer workload that enqueues a fixed number of tasks.
-4. Waits for the queue to fully drain.
-5. Collects performance metrics from Redis and Docker.
-
-The experiment is repeated with increasing worker counts:
-
-```
-1, 2, 4, 8, 12, 16
+*Run:*
+```bash
+chmod +x scripts/scale_test.sh
+./scripts/scale_test.sh
 ```
 
-The following metrics are recorded for each run:
+*Metrics recorded per run:*
+- throughput (tasks/sec)
+- average latency (ms)
+- duration (s)
+- aggregate worker CPU (%)
+- Redis CPU (%)
+- throughput per worker (throughput / worker count)
 
-- **Throughput** (tasks processed per second)
-- **Average task latency** (milliseconds)
-- **Total execution time**
-- **Aggregate worker CPU utilization**
-- **Redis CPU utilization**
-- **Scaling efficiency** (throughput relative to worker count)
-
-Results are written to a CSV file:
-
-```
-scalability_results.csv
-```
-
-Example format:
-
-```
-worker_count,throughput,avg_latency_ms,duration_s,worker_cpu_percent,redis_cpu_percent,scaling_efficiency
-```
-
-This experiment helps evaluate how effectively the system scales as additional worker processes are added.
+*Output:*
+- `logs/scale/results.csv`
 
 ---
 
-## Design Tradeoffs
+### Plotting Scalability Results (`scripts/plot_results.py`)
 
-The system prioritizes reliability and simplicity.
+After running the scale test, you can generate charts from the CSV results.
 
-**At-least-once delivery**
+*Run:*
+```bash
+python3 scripts/plot_results.py
+```
 
-Tasks may run more than once after crashes. This requires tasks to be idempotent in real production systems.
+This script reads:
 
-**Redis as a single coordination node**
+- `logs/scale/results.csv`
 
-Redis simplifies queue management but introduces a single point of failure. Production systems often use replication or distributed brokers.
+and generates:
 
-**Fixed thread pool**
-
-A fixed pool simplifies resource management but limits maximum concurrency to the configured worker count.
+- `logs/scale/total_throughput.png`
+- `logs/scale/latency.png`
+- `logs/scale/redis_cpu.png`
+- `logs/scale/worker_cpu.png`
+- `logs/scale/throughput_per_worker.png`
 
 ---
 
