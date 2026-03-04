@@ -1,0 +1,10 @@
+------------------------------------------
+Benchmark Results:
+  Duration:                   5.248s
+  Unique Tasks Successful:    100
+  Total Retries Attempted:    9
+  Tasks in Dead Letter (DLQ): 1
+  Average Task Latency:       2095.68ms
+  System Throughput:          19.05 tasks/sec
+------------------------------------------
+Total Tasks Accounted For:    101 / 101

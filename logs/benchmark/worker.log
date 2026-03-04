@@ -1,0 +1,150 @@
+Connected to Redis!
+Connected to Redis!
+Consumer running. Waiting for tasks...
+[2026-03-04 23:15:48] [Info] [Thread 140467183298240] Task 1 finished in 504ms
+Consumer running. Waiting for tasks...
+[2026-03-04 23:15:48] [Info] [Thread 140230766728896] Task 6 finished in 501ms
+[2026-03-04 23:15:48] [Info] [Thread 140230791907008] Task 7 finished in 502ms
+[2026-03-04 23:15:48] [Info] [Thread 140230766728896] Processed Task 6 (Type: UPLOAD)
+[2026-03-04 23:15:48] [Info] [Thread 140230783514304] Task 8 finished in 501ms
+[2026-03-04 23:15:48] [Info] [Thread 140230791907008] Processed Task 7 (Type: EMAIL)
+[2026-03-04 23:15:48] [Info] [Thread 140230783514304] Processed Task 8 (Type: CONVERT)
+[2026-03-04 23:15:48] [Info] [Thread 140230775121600] Task 9 finished in 502ms
+[2026-03-04 23:15:48] [Info] [Thread 140230800299712] Task 10 finished in 501ms
+[2026-03-04 23:15:48] [Info] [Thread 140230775121600] Processed Task 9 (Type: UPLOAD)
+[2026-03-04 23:15:48] [Info] [Thread 140230800299712] Processed Task 10 (Type: EMAIL)
+[2026-03-04 23:15:49] [Info] [Thread 140230766728896] Task 21 finished in 975ms
+[2026-03-04 23:15:49] [Info] [Thread 140230791907008] Task 22 finished in 974ms
+[2026-03-04 23:15:48] [Info] [Thread 140467174905536] Task 2 finished in 501ms
+[2026-03-04 23:15:48] [Info] [Thread 140467158120128] Task 3 finished in 502ms
+[2026-03-04 23:15:48] [Info] [Thread 140467174905536] Processed Task 2 (Type: CONVERT)
+[2026-03-04 23:15:48] [Info] [Thread 140467183298240] Processed Task 1 (Type: EMAIL)
+[2026-03-04 23:15:48] [Info] [Thread 140467191690944] Task 4 finished in 501ms
+Connected to Redis!
+Consumer running. Waiting for tasks...
+[2026-03-04 23:15:48] [Info] [Thread 139621831546560] Task 11 finished in 502ms
+[2026-03-04 23:15:48] [Info] [Thread 139621814761152] Task 12 finished in 502ms
+[2026-03-04 23:15:48] [Info] [Thread 139621831546560] Processed Task 11 (Type: CONVERT)
+[2026-03-04 23:15:48] [Info] [Thread 139621736380096] Task 13 finished in 501ms
+[2026-03-04 23:15:48] [Info] [Thread 139621814761152] Processed Task 12 (Type: UPLOAD)
+[2026-03-04 23:15:48] [Info] [Thread 139621823153856] Task 14 finished in 501ms
+[2026-03-04 23:15:48] [Info] [Thread 139621736380096] Processed Task 13 (Type: EMAIL)
+[2026-03-04 23:15:48] [Info] [Thread 139621727987392] Task 15 finished in 501ms
+[2026-03-04 23:15:48] [Info] [Thread 139621823153856] Processed Task 14 (Type: CONVERT)
+[2026-03-04 23:15:48] [Info] [Thread 139621727987392] Processed Task 15 (Type: UPLOAD)
+[2026-03-04 23:15:48] [Info] [Thread 140467158120128] Processed Task 3 (Type: UPLOAD)
+[2026-03-04 23:15:48] [Info] [Thread 140467191690944] Processed Task 4 (Type: EMAIL)
+[2026-03-04 23:15:49] [Info] [Thread 139621831546560] Task 26 finished in 976ms
+[2026-03-04 23:15:49] [Info] [Thread 139621814761152] Task 27 finished in 975ms
+[2026-03-04 23:15:48] [Error] [Thread 140467166512832] Processing task 5 failed, retry #1
+[2026-03-04 23:15:49] [Info] [Thread 140467174905536] Task 16 finished in 977ms
+[2026-03-04 23:15:49] [Info] [Thread 139621831546560] Processed Task 26 (Type: CONVERT)
+[2026-03-04 23:15:49] [Info] [Thread 139621814761152] Processed Task 27 (Type: UPLOAD)
+[2026-03-04 23:15:49] [Info] [Thread 139621736380096] Task 28 finished in 975ms
+[2026-03-04 23:15:49] [Info] [Thread 139621736380096] Processed Task 28 (Type: EMAIL)
+[2026-03-04 23:15:49] [Info] [Thread 139621823153856] Task 29 finished in 975ms
+[2026-03-04 23:15:49] [Info] [Thread 139621823153856] Processed Task 29 (Type: CONVERT)
+[2026-03-04 23:15:49] [Info] [Thread 139621727987392] Task 30 finished in 975ms
+[2026-03-04 23:15:49] [Info] [Thread 139621727987392] Processed Task 30 (Type: UPLOAD)
+[2026-03-04 23:15:49] [Info] [Thread 139621831546560] Task 41 finished in 1449ms
+[2026-03-04 23:15:49] [Info] [Thread 139621814761152] Task 42 finished in 1448ms
+[2026-03-04 23:15:49] [Info] [Thread 139621736380096] Task 43 finished in 1448ms
+[2026-03-04 23:15:49] [Info] [Thread 139621831546560] Processed Task 41 (Type: CONVERT)
+[2026-03-04 23:15:49] [Info] [Thread 139621823153856] Task 44 finished in 1447ms
+[2026-03-04 23:15:49] [Info] [Thread 139621814761152] Processed Task 42 (Type: UPLOAD)
+[2026-03-04 23:15:49] [Info] [Thread 139621736380096] Processed Task 43 (Type: EMAIL)
+[2026-03-04 23:15:49] [Info] [Thread 140467183298240] Task 17 finished in 976ms
+[2026-03-04 23:15:49] [Info] [Thread 140467158120128] Task 18 finished in 974ms
+[2026-03-04 23:15:49] [Info] [Thread 140467174905536] Processed Task 16 (Type: EMAIL)
+[2026-03-04 23:15:49] [Info] [Thread 140467191690944] Task 19 finished in 974ms
+[2026-03-04 23:15:49] [Info] [Thread 140467183298240] Processed Task 17 (Type: CONVERT)
+[2026-03-04 23:15:49] [Info] [Thread 139621727987392] Task 45 finished in 1447ms
+[2026-03-04 23:15:49] [Info] [Thread 139621823153856] Processed Task 44 (Type: CONVERT)
+[2026-03-04 23:15:49] [Info] [Thread 140467158120128] Processed Task 18 (Type: UPLOAD)
+[2026-03-04 23:15:49] [Info] [Thread 140467191690944] Processed Task 19 (Type: EMAIL)
+[2026-03-04 23:15:49] [Info] [Thread 139621727987392] Processed Task 45 (Type: UPLOAD)
+[2026-03-04 23:15:50] [Info] [Thread 139621831546560] Task 56 finished in 1922ms
+[2026-03-04 23:15:50] [Info] [Thread 139621814761152] Task 57 finished in 1921ms
+[2026-03-04 23:15:50] [Info] [Thread 139621736380096] Task 58 finished in 1920ms
+[2026-03-04 23:15:50] [Info] [Thread 139621831546560] Processed Task 56 (Type: CONVERT)
+[2026-03-04 23:15:50] [Info] [Thread 139621823153856] Task 59 finished in 1919ms
+[2026-03-04 23:15:50] [Info] [Thread 139621814761152] Processed Task 57 (Type: UPLOAD)
+[2026-03-04 23:15:50] [Info] [Thread 139621736380096] Processed Task 58 (Type: EMAIL)
+[2026-03-04 23:15:50] [Info] [Thread 139621727987392] Task 60 finished in 1919ms
+[2026-03-04 23:15:50] [Info] [Thread 139621823153856] Processed Task 59 (Type: CONVERT)
+[2026-03-04 23:15:49] [Error] [Thread 140467166512832] Processing task 20 failed, retry #1
+[2026-03-04 23:15:49] [Info] [Thread 140230766728896] Processed Task 21 (Type: UPLOAD)
+[2026-03-04 23:15:49] [Info] [Thread 140230791907008] Processed Task 22 (Type: EMAIL)
+[2026-03-04 23:15:49] [Error] [Thread 140230783514304] Processing task 23 failed, retry #1
+[2026-03-04 23:15:49] [Info] [Thread 140230775121600] Task 24 finished in 975ms
+[2026-03-04 23:15:49] [Info] [Thread 140230775121600] Processed Task 24 (Type: UPLOAD)
+[2026-03-04 23:15:49] [Info] [Thread 140230800299712] Task 25 finished in 976ms
+[2026-03-04 23:15:49] [Info] [Thread 140467158120128] Task 33 finished in 1448ms
+[2026-03-04 23:15:49] [Info] [Thread 140467183298240] Task 32 finished in 1450ms
+[2026-03-04 23:15:49] [Error] [Thread 140467174905536] Processing task 31 failed, retry #1
+[2026-03-04 23:15:49] [Info] [Thread 140467183298240] Processed Task 32 (Type: CONVERT)
+[2026-03-04 23:15:49] [Info] [Thread 140467158120128] Processed Task 33 (Type: UPLOAD)
+[2026-03-04 23:15:49] [Info] [Thread 140230800299712] Processed Task 25 (Type: EMAIL)
+[2026-03-04 23:15:49] [Info] [Thread 140230766728896] Task 36 finished in 1447ms
+[2026-03-04 23:15:49] [Info] [Thread 140230791907008] Task 37 finished in 1447ms
+[2026-03-04 23:15:49] [Info] [Thread 140230766728896] Processed Task 36 (Type: UPLOAD)
+[2026-03-04 23:15:49] [Info] [Thread 140230783514304] Task 38 finished in 1446ms
+[2026-03-04 23:15:49] [Info] [Thread 140230791907008] Processed Task 37 (Type: EMAIL)
+[2026-03-04 23:15:49] [Info] [Thread 140230783514304] Processed Task 38 (Type: CONVERT)
+[2026-03-04 23:15:49] [Info] [Thread 140230775121600] Task 39 finished in 1449ms
+[2026-03-04 23:15:49] [Info] [Thread 140230800299712] Task 40 finished in 1448ms
+[2026-03-04 23:15:49] [Info] [Thread 140230775121600] Processed Task 39 (Type: UPLOAD)
+[2026-03-04 23:15:49] [Info] [Thread 140230800299712] Processed Task 40 (Type: EMAIL)
+[2026-03-04 23:15:50] [Info] [Thread 140230766728896] Task 51 finished in 1920ms
+[2026-03-04 23:15:49] [Info] [Thread 140467166512832] Task 35 finished in 1446ms
+[2026-03-04 23:15:49] [Error] [Thread 140467191690944] Processing task 34 failed, retry #1
+[2026-03-04 23:15:49] [Info] [Thread 140467166512832] Processed Task 35 (Type: CONVERT)
+[2026-03-04 23:15:50] [Info] [Thread 140467174905536] Task 46 finished in 1923ms
+[2026-03-04 23:15:50] [Info] [Thread 140467191690944] Task 49 finished in 1919ms
+[2026-03-04 23:15:50] [Info] [Thread 140467158120128] Task 48 finished in 1921ms
+[2026-03-04 23:15:50] [Info] [Thread 140467174905536] Processed Task 46 (Type: EMAIL)
+[2026-03-04 23:15:50] [Info] [Thread 140467183298240] Task 47 finished in 1924ms
+[2026-03-04 23:15:50] [Info] [Thread 140467166512832] Task 50 finished in 1918ms
+[2026-03-04 23:15:50] [Info] [Thread 140467191690944] Processed Task 49 (Type: EMAIL)
+[2026-03-04 23:15:50] [Info] [Thread 140467183298240] Processed Task 47 (Type: CONVERT)
+[2026-03-04 23:15:50] [Info] [Thread 140467158120128] Processed Task 48 (Type: UPLOAD)
+[2026-03-04 23:15:50] [Info] [Thread 140467166512832] Processed Task 50 (Type: CONVERT)
+[2026-03-04 23:15:50] [Info] [Thread 140467174905536] Task 61 finished in 2396ms
+[2026-03-04 23:15:50] [Info] [Thread 140467158120128] Task 64 finished in 2392ms
+[2026-03-04 23:15:50] [Info] [Thread 140467191690944] Task 62 finished in 2396ms
+[2026-03-04 23:15:50] [Info] [Thread 140467166512832] Task 65 finished in 2391ms
+[2026-03-04 23:15:50] [Error] [Thread 140467183298240] Processing task 63 failed, retry #1
+[2026-03-04 23:15:50] [Info] [Thread 140230766728896] Processed Task 51 (Type: UPLOAD)
+[2026-03-04 23:15:50] [Error] [Thread 140230791907008] Processing task 52 failed, retry #1
+[2026-03-04 23:15:50] [Error] [Thread 140230783514304] Processing task 53 failed, retry #1
+[2026-03-04 23:15:50] [Info] [Thread 140230775121600] Task 54 finished in 1923ms
+[2026-03-04 23:15:50] [Info] [Thread 140230800299712] Task 55 finished in 1922ms
+[2026-03-04 23:15:50] [Info] [Thread 140230775121600] Processed Task 54 (Type: UPLOAD)
+[2026-03-04 23:15:50] [Info] [Thread 140230800299712] Processed Task 55 (Type: EMAIL)
+[2026-03-04 23:15:50] [Info] [Thread 140230766728896] Task 66 finished in 2393ms
+[2026-03-04 23:15:50] [Info] [Thread 140230791907008] Task 67 finished in 2393ms
+[2026-03-04 23:15:50] [Info] [Thread 140230783514304] Task 68 finished in 2393ms
+[2026-03-04 23:15:50] [Info] [Thread 140230766728896] Processed Task 66 (Type: UPLOAD)
+[2026-03-04 23:15:50] [Info] [Thread 140230791907008] Processed Task 67 (Type: EMAIL)
+[2026-03-04 23:15:50] [Info] [Thread 140230783514304] Processed Task 68 (Type: CONVERT)
+[2026-03-04 23:15:50] [Info] [Thread 140230800299712] Task 70 finished in 2395ms
+[2026-03-04 23:15:50] [Info] [Thread 140230775121600] Task 69 finished in 2397ms
+[2026-03-04 23:15:50] [Info] [Thread 139621727987392] Processed Task 60 (Type: UPLOAD)
+[2026-03-04 23:15:50] [Info] [Thread 139621831546560] Task 71 finished in 2396ms
+[2026-03-04 23:15:50] [Error] [Thread 139621814761152] Processing task 72 failed, retry #1
+[2026-03-04 23:15:50] [Info] [Thread 139621736380096] Task 73 finished in 2395ms
+[2026-03-04 23:15:50] [Info] [Thread 139621823153856] Task 74 finished in 2393ms
+[2026-03-04 23:15:50] [Info] [Thread 139621831546560] Processed Task 71 (Type: CONVERT)
+[2026-03-04 23:15:50] [Info] [Thread 139621727987392] Task 75 finished in 2393ms
+[2026-03-04 23:15:50] [Info] [Thread 139621736380096] Processed Task 73 (Type: EMAIL)
+[2026-03-04 23:15:50] [Info] [Thread 139621823153856] Processed Task 74 (Type: CONVERT)
+[2026-03-04 23:15:50] [Info] [Thread 140230800299712] Processed Task 70 (Type: EMAIL)
+[2026-03-04 23:15:50] [Info] [Thread 140230775121600] Processed Task 69 (Type: UPLOAD)
+[2026-03-04 23:15:51] [Info] [Thread 140230791907008] Task 82 finished in 2870ms
+[2026-03-04 23:15:50] [Info] [Thread 140467174905536] Processed Task 61 (Type: EMAIL)
+[2026-03-04 23:15:50] [Info] [Thread 140467191690944] Processed Task 62 (Type: CONVERT)
+[2026-03-04 23:15:50] [Info] [Thread 140467158120128] Processed Task 64 (Type: EMAIL)
+[2026-03-04 23:15:50] [Info] [Thread 140467166512832] Processed Task 65 (Type: CONVERT)
+[2026-03-04 23:15:51] [Info] [Thread 140467183298240] Task 76 finished in 2875ms
+[2026-03-04 23:15:51] [Info] [Thread 140467174905536] Task 77 finished in 2874ms
+[2026-03-04 23:15:51] [Info] [Thread 140467158120128] Task 79 finished in 2871ms

@@ -18,7 +18,7 @@ RUN git clone https://github.com/sewenew/redis-plus-plus.git && \
     make && \
     make install
 
-# Build your app
+# Build the app
 WORKDIR /app
 COPY . .
 RUN mkdir -p build && cd build && cmake .. && make -j$(nproc)
