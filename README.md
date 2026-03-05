@@ -1,16 +1,27 @@
 # Distributed C++ Task Queue
 
-This project implements a background job processing system in C++ that uses Redis to store and manage a task queue. A producer enqueues tasks in Redis, and a pool of worker threads retrieves and processes those tasks concurrently, allowing work to be executed asynchronously.
+This project implements a reliable background job processing system using **C++, Redis, and multithreading**. A producer enqueues tasks in Redis, and a pool of worker threads retrieves and processes those tasks concurrently, allowing work to be executed asynchronously.
 
-The system is designed with reliability and controlled concurrency in mind. Tasks move through explicit queue states so work is not lost if a worker crashes, and failed jobs are retried before eventually being moved to a dead-letter queue.
-
-This design provides at-least-once task processing: tasks are acknowledged only after successful execution, ensuring work is not silently lost even if a worker crashes.
-
-The project demonstrates how a lightweight distributed job queue can be built using Redis primitives, a thread pool, and careful handling of task state transitions.
+The system demonstrates practical distributed queue design patterns including **atomic task claiming, retry logic, dead-letter queues, crash recovery, and performance benchmarking**.
 
 ---
 
-## Architecture Overview
+## Table of Contents
+
+* [Architecture](#architecture)
+* [Tech Stack](#tech-stack)
+* [System Design](#system-design)
+* [Metrics](#metrics)
+* [Project Structure](#project-structure)
+* [Building the Project](#building-the-project)
+* [Running the System](#running-the-system)
+* [Benchmarking and Scalability Study](#benchmarking-and-scalability-study)
+* [Results and Analysis](#results-and-analysis)
+* [Python Dependencies (Plotting)](#python-dependencies-plotting)
+
+---
+
+## Architecture
 
 ```
 Producer
@@ -30,34 +41,36 @@ Worker Thread Pool
    └── failure → retry or move to dead-letter queue
 ```
 
+The system follows a **producer → queue → worker pool** model. Tasks are pushed into Redis and processed asynchronously by worker threads. Redis serves as the task broker and provides atomic operations that guarantee safe task handoff between producers and workers.
+
 ---
 
 ## Tech Stack
 
-**Language**
+### Language
 - C++20
 
-**Libraries**
+### Libraries
 - Standard Template Library (STL)
-- nlohmann/json for task serialization
-- redis-plus-plus (Redis C++ client)
+- `nlohmann/json` for task serialization
+- `redis-plus-plus` (Redis C++ client)
 
-**Infrastructure**
-- Redis (task broker)
+### Infrastructure
+- Redis
 - Docker / Docker Compose
 
-**Build Tools**
+### Build Tools
 - CMake
 
 ---
 
-## System Components
+## System Design
 
-The system consists of three main components.
+The system consists of three primary components.
 
 ### Producer
 
-The producer generates tasks, serializes them to JSON, and pushes them into a Redis list that acts as the pending task queue.
+The producer generates tasks, serializes them as JSON, and pushes them into a Redis list that acts as the pending task queue.
 
 The producer is intentionally simple. Its role is only to enqueue work so the behavior of the worker system can be observed independently.
 
@@ -73,105 +86,85 @@ Three queues are used:
 |------|--------|
 | `queue` | pending tasks waiting to be processed |
 | `queue:processing` | tasks currently claimed by workers |
-| `queue:dead_letter` | tasks that failed after retry attempts, or are of invalid format |
+| `queue:dead_letter` | tasks that failed after retry attempts or are invalid |
 
-Redis is well suited for this role because list operations are atomic and support blocking operations that allow workers to efficiently wait for new work instead of periodically polling.
+Redis is well suited for this role because its list operations are **atomic** and support **blocking reads**, allowing workers to efficiently wait for new work without polling.
 
 ---
 
 ### Worker Pool
 
-The consumer process launches a fixed pool of worker threads that remain active for the lifetime of the process, repeatedly pulling tasks from the queue as they become available. Limiting the number of worker threads reduces excessive context switching and improves CPU efficiency.
+The consumer process launches a fixed pool of worker threads that repeatedly claim tasks and process them.
+
+Limiting the number of worker threads reduces excessive context switching and improves CPU efficiency while still enabling parallel task processing.
 
 ---
 
-## Task Lifecycle
+### Task Lifecycle
 
-Tasks move through several states during their lifetime.
+Tasks move through several states during processing.
 
----
+#### 1. Enqueue
 
-### 1. Enqueue
-
-The producer creates a task and pushes it into the Redis queue using `RPUSH`. This records the work that needs to be processed without executing the task immediately.
+The producer creates a task and pushes it into the Redis queue using `RPUSH`.
 
 ---
 
-### 2. Claiming Work
+#### 2. Claiming Work
 
-Workers claim tasks using Redis `BLMOVE`, which atomically moves an item from:
+Workers claim tasks using Redis `BLMOVE`, which atomically moves a task from:
 
 ```
-queue  →  queue:processing
+queue → queue:processing
 ```
 
-This operation blocks until work is available.
-
-Because `BLMOVE` performs the transfer atomically, a task will always exist in either the pending queue or the processing queue, even if a worker crashes during the operation.
+This ensures tasks always exist in either the pending queue or processing queue.
 
 ---
 
-### 3. Processing
+#### 3. Processing
 
 Once claimed, the worker:
 
-- Parses the JSON payload  
-  - If the payload is invalid, the task is moved to the dead-letter queue.
-- Simulates work  
-  - If processing fails and the retry count is less than 3, the retry counter is incremented and the task is returned to the pending queue.  
-  - If processing fails and the retry limit is exceeded, the task is moved to the dead-letter queue.
-- Measures processing latency
-- Records completion metrics
+- parses the JSON payload
+- simulates work
+- measures latency
+- records completion metrics
 
----
-
-### 4. Retries
-
-If task execution fails, the system retries the task up to three times. The retry counter is incremented and the task is placed back into the main queue so another worker can attempt it.
-
----
-
-### 5. Dead Letter Queue
-
-Tasks are moved to a dead-letter queue when:
-
-- the retry limit is exceeded
-- the payload cannot be parsed as valid JSON
-
-Separating failed tasks prevents a permanently broken task from blocking the queue and allows failures to be inspected later.
+If parsing fails or retries are exhausted, the task is moved to the **dead-letter queue**.
 
 ---
 
 ## Reliability Mechanisms
 
-### Atomic Queue Transitions
+### Atomic Queue Transfers
 
-Redis `BLMOVE` ensures tasks are transferred between queues atomically. This prevents tasks from disappearing between the time they are claimed and processed.
+`BLMOVE` ensures tasks are transferred between queues atomically, preventing tasks from being lost between claiming and processing.
 
 ---
 
 ### Crash Recovery
 
-When the worker pool starts, it moves any leftover tasks in `queue:processing` back to the main queue. These tasks may have been interrupted by a crash or forced shutdown.
+When the worker pool starts, any leftover tasks in `queue:processing` are moved back to the main queue. These tasks may have been interrupted by a crash or shutdown.
 
 ---
 
 ### Delivery Guarantee
 
-The system provides **at-least-once task processing**. Tasks are acknowledged only after successful completion. If a worker crashes after claiming a task, the task remains in `queue:processing` and is returned to the pending queue on the next startup via the recovery step, allowing it to be processed again.
+The system provides **at-least-once task processing**.
 
-This means a task may run more than once, but it will not be silently lost.
+Tasks are acknowledged only after successful completion. If a worker crashes mid-task, the task will be returned to the queue and retried during recovery.
 
 ---
 
 ## Metrics
 
-Workers record simple performance metrics:
+Workers record basic performance metrics:
 
 - completed task count
 - total accumulated latency
 
-Latency is measured from task creation time to completion. These metrics allow the system’s throughput and responsiveness to be evaluated during benchmarks.
+Latency is measured from **task creation to completion**, enabling evaluation of system throughput and responsiveness during benchmarks.
 
 ---
 
@@ -193,7 +186,8 @@ task-queue/
 │
 ├── scripts/
 │   ├── benchmark.sh
-│   └── scale_test.sh
+│   ├── scale_test.sh
+│   └── plot_results.py
 │
 ├── CMakeLists.txt
 └── docker-compose.yml
@@ -203,7 +197,7 @@ task-queue/
 
 ## Building the Project
 
-Install Redis development dependencies if needed.
+Install Redis development dependencies if needed:
 
 ```
 sudo apt install libhiredis-dev
@@ -222,175 +216,206 @@ make
 
 ## Running the System
 
-You can run the system in *three ways*, depending on what you’re trying to do:
+The system can be run in three ways depending on your workflow:
 
-- *Locally (manual)*: best for development and debugging (fast iteration, direct control over the binaries).
-- *Locally (convenience script)*: best for quick one-command local runs.
-- *Docker Compose*: best for consistency and testing (reproducible environment, mirrors the benchmark scripts, easy scaling).
-
-> Note: if the binaries are already up to date, you can comment out the build step in `scripts/run_system.sh` to speed up repeated runs. Re-enable it after changing source files or build configuration.
+- **Local (manual)** — best for development and debugging
+- **Local script** — quick one-command execution
+- **Docker Compose** — reproducible environment for benchmarking
 
 ---
 
-### Option A: Run Locally (manual development / debugging)
+### Option A: Local Development
 
-Use this when you want fast iteration, readable logs, and the ability to debug the C++ processes directly.
+Start Redis:
 
-1) *Start Redis locally*
-```bash
+```
 redis-server
 ```
 
-2) *Optional: clear previous queue / metric state*
-```bash
+Optional: clear previous state
+
+```
 redis-cli DEL queue queue:processing queue:dead_letter completed_tasks total_latency_ms latency_count
 ```
 
-This removes any leftover pending tasks, in-flight task markers, dead-letter entries, and metric counters from previous runs.
+Build the project:
 
-3) *Build the project*
-```bash
+```
 cd build
 cmake ..
 make
 cd ..
 ```
 
-4) *Start the consumer (worker pool)*
-```bash
+Start the worker pool:
+
+```
 ./build/consumer 10
 ```
-This launches one consumer process with a fixed pool of *10 worker threads* that continuously claim and process tasks.
 
-5) *Run the producer* (in a second terminal)
-```bash
+Run the producer in another terminal:
+
+```
 ./build/producer 5000
 ```
-This enqueues *5000 tasks* into Redis. The worker threads process them asynchronously.
 
 ---
 
-### Option B: Run Locally (convenience script)
+### Option B: Convenience Script
 
-Use this when you want a one-command local run without manually starting each component.
-
-*Run:*
-```bash
+```
 chmod +x scripts/run_system.sh
 ./scripts/run_system.sh
 ```
 
-This helper script builds the project, resets Redis state, starts the consumer, runs the producer, and waits for the *pending queue* to empty before exiting.
+This script builds the project, resets Redis state, runs the producer, and waits for the queue to drain.
 
 ---
 
-### Option C: Run with Docker Compose (reproducible / benchmark-ready)
+### Option C: Docker Compose
 
-Use this when you want a consistent environment, containerized Redis, and the ability to scale worker processes easily.
+Build services:
 
-1) *Build services*
-```bash
+```
 docker compose build
 ```
 
-2) *Start Redis and workers*
-```bash
+Start Redis and workers:
+
+```
 docker compose up -d redis worker
 ```
 
-3) *Run the producer workload*
-```bash
+Run workload:
+
+```
 docker compose run --rm -T producer ./producer 5000
 ```
 
-4) *Stop everything*
-```bash
+Stop services:
+
+```
 docker compose down
 ```
 
 ---
 
-## Benchmarking and Scalability Testing
+## Benchmarking and Scalability Study
 
-Two scripts are provided to evaluate performance. Both scripts run the system using *Docker Compose* so results are repeatable and easy to reproduce.
+Two scripts evaluate system performance.
 
-> Note: if the Docker images are already up to date, you can comment out the `docker compose build` step in the benchmark scripts to speed up repeated runs. Re-enable it after changing source files, Dockerfiles, or build configuration.
+Both run using **Docker Compose** to ensure reproducible environments.
 
 ---
 
-### Workload Benchmark (`scripts/benchmark.sh`)
+### Workload Benchmark
 
-This script runs a short deterministic test and produces a summary report plus logs.
-
-*Run:*
-```bash
-chmod +x scripts/benchmark.sh
-./scripts/benchmark.sh
+```
+scripts/benchmark.sh
 ```
 
-*Outputs:*
-- `logs/benchmark/producer.log` (producer output)
-- `logs/benchmark/worker.log` (worker logs)
-- `logs/benchmark/summary.txt` (printed summary report)
+This script:
 
-The summary includes:
+1. resets the environment
+2. builds containers
+3. starts Redis and workers
+4. runs the producer workload
+5. waits for the queue to drain
+6. collects metrics and logs
+
+Outputs:
+
+```
+logs/benchmark/
+```
+
+Including:
+
+- worker logs
+- producer logs
+- summary report
+
+Metrics include:
+
 - duration
-- unique tasks successful
-- retries attempted
-- DLQ count
+- successful tasks
+- retries
+- dead-letter count
 - average latency
 - throughput
 
-> Note: the script waits for the pending queue to empty, not for `queue:processing` to be empty. This avoids hanging if crashed workers leave stale in-flight entries behind.
-
 ---
 
-### Horizontal Scalability Test (`scripts/scale_test.sh`)
+### Horizontal Scaling Test
 
-This script measures how throughput and latency change as the number of worker *containers* increases.
-
-*Run:*
-```bash
-chmod +x scripts/scale_test.sh
-./scripts/scale_test.sh
+```
+scripts/scale_test.sh
 ```
 
-*Metrics recorded per run:*
-- throughput (tasks/sec)
-- average latency (ms)
-- duration (s)
-- aggregate worker CPU (%)
-- Redis CPU (%)
-- throughput per worker (throughput / worker count)
+This test measures how system performance changes as the number of worker containers increases.
 
-*Output:*
-- `logs/scale/results.csv`
+Metrics recorded:
+
+- throughput (tasks/sec)
+- average latency
+- total runtime
+- Redis CPU usage
+- worker CPU usage
+- throughput per worker
+
+Results are written to:
+
+```
+logs/scale/results.csv
+```
 
 ---
 
-### Plotting Scalability Results (`scripts/plot_results.py`)
+## Results and Analysis
 
-After running the scale test, you can generate charts from the CSV results.
+Scalability experiments evaluate how the system behaves under increasing worker counts.
 
-*Run:*
-```bash
+Plots generated from the scaling results include:
+
+- total throughput vs worker count
+- average latency vs worker count
+- Redis CPU usage
+- worker CPU utilization
+- throughput per worker
+
+These plots are generated using the plotting script:
+
+```
 python3 scripts/plot_results.py
 ```
 
-This script reads:
+Example insights from the benchmark:
 
-- `logs/scale/results.csv`
+- Throughput increases nearly linearly as additional workers are added.
+- Redis CPU utilization increases with worker count, eventually becoming the primary bottleneck.
+- Throughput per worker gradually decreases as contention for Redis grows.
 
-and generates:
-
-- `logs/scale/total_throughput.png`
-- `logs/scale/latency.png`
-- `logs/scale/redis_cpu.png`
-- `logs/scale/worker_cpu.png`
-- `logs/scale/throughput_per_worker.png`
+This demonstrates that the system scales effectively with additional workers until the shared queue infrastructure becomes the limiting factor.
 
 ---
 
-## Summary
+## Python Dependencies (Plotting)
 
-This project demonstrates how to build a reliable background job system using C++, Redis, and multithreading. It highlights practical queue design patterns such as atomic task claiming, retry logic, dead-letter queues, and crash recovery while remaining small enough to understand end-to-end.
+The scalability plots require the following Python packages:
+
+* `pandas`
+* `matplotlib`
+
+Install with:
+
+```
+pip install pandas matplotlib
+```
+
+If your system Python is managed (e.g., Homebrew on macOS), create a virtual environment:
+
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install pandas matplotlib
+```
