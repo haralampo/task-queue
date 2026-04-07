@@ -387,8 +387,8 @@ The system demonstrates near-perfect linear scalability, with throughput increas
 | 16 | 135.21 | 5,231 | 14.8 | 94.8% |
 
 ### Visualizations
-![Throughput Scaling](logs/scale/throughput.png)
-![Latency Reduction](logs/scale/latency.png)
+<img src="logs/scale/throughput.png" width="450">
+<img src="logs/scale/latency.png" width="450">
 
 ### 2. Key Insights
 * **Linear Throughput Growth**: The system achieved a **15.17x speedup** with 16 workers compared to a single worker. The transition from 1 to 2 workers (17.66 tasks/s) proves that the distribution logic is highly efficient with zero significant initial overhead.
