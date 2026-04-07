@@ -24,14 +24,14 @@ COPY . .
 RUN mkdir -p build && cd build && cmake .. && make -j$(nproc)
 
 # Stage 2: The Runtime
-FROM debian:trixie-slim
+FROM --platform=linux/arm64 debian:trixie-slim
 
 RUN apt-get update && apt-get install -y ca-certificates && rm -rf /var/lib/apt/lists/*
 
 # Copy redis-plus-plus from the "builder" stage
 COPY --from=builder /usr/local/lib/libredis++* /usr/local/lib/
 # Copy the hiredis library that was installed in the "builder" stage
-COPY --from=builder /usr/lib/x86_64-linux-gnu/libhiredis* /usr/local/lib/
+COPY --from=builder /usr/lib/*-linux-gnu/libhiredis* /usr/local/lib/
 
 RUN ldconfig
 
