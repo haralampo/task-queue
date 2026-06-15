@@ -10,13 +10,13 @@ The system demonstrates practical distributed queue design patterns including **
 
 * [Architecture](#architecture)
 * [Tech Stack](#tech-stack)
+* [Results and Analysis](#results-and-analysis)
 * [System Design](#system-design)
 * [Metrics](#metrics)
 * [Project Structure](#project-structure)
 * [Building the Project](#building-the-project)
 * [Running the System](#running-the-system)
 * [Benchmarking and Scalability Study](#benchmarking-and-scalability-study)
-* [Results and Analysis](#results-and-analysis)
 * [Python Dependencies (Plotting)](#python-dependencies-plotting)
 
 ---
@@ -61,6 +61,33 @@ The system follows a **producer → queue → worker pool** model. Tasks are pus
 
 ### Build Tools
 - CMake
+
+---
+
+## Results and Analysis
+
+I conducted a horizontal scalability study using a fixed workload of **2,000 tasks** (each with a 500ms simulated processing delay). The system was benchmarked on an **Apple M2 (16GB)**, scaling from 1 to 16 worker containers.
+
+### 1. Performance Benchmark Results
+The system demonstrates near-perfect linear scalability, with throughput increasing proportionally to the number of worker containers.
+
+| Workers | Throughput (tasks/s) | Avg Latency (ms) | Total Time (s) | Scaling Efficiency |
+|:--- |:--- |:--- |:--- |:--- |
+| 1 | 8.91 | 109,748 | 224.3 | 100.0% |
+| 2 | 17.66 | 53,944 | 113.1 | 99.1% |
+| 4 | 35.18 | 26,064 | 56.8 | 98.7% |
+| 8 | 68.58 | 12,320 | 29.2 | 96.2% |
+| 16 | 135.21 | 5,231 | 14.8 | 94.8% |
+
+### Visualizations
+<img src="logs/scale/throughput.png" width="450">
+<img src="logs/scale/latency.png" width="450">
+
+### 2. Key Insights
+* **Linear Throughput Growth**: The system achieved a **15.17x speedup** with 16 workers compared to a single worker. The transition from 1 to 2 workers (17.66 tasks/s) proves that the distribution logic is highly efficient with zero significant initial overhead.
+* **Latency Mitigation**: Increasing the worker count from 1 to 16 reduced the average task turnaround time by **95.2%**. This highlights the system's effectiveness at handling high-volume bursts.
+* **Stable Efficiency**: Even at 16 workers, the **Scaling Efficiency remained at ~95%**. This suggests that the Redis `BLMOVE` atomic operation successfully prevents "thundering herd" problems or lock contention at this scale.
+* **Resource Overhead**: Redis CPU usage remained negligible (<0.6%), indicating that the C++ workers are the primary consumers of resources and the system is successfully CPU-bound rather than I/O-bound.
 
 ---
 
@@ -368,33 +395,6 @@ Results are written to:
 ```
 logs/scale/results.csv
 ```
-
----
-
-## Results and Analysis
-
-I conducted a horizontal scalability study using a fixed workload of **2,000 tasks** (each with a 500ms simulated processing delay). The system was benchmarked on an **Apple M2 (16GB)**, scaling from 1 to 16 worker containers.
-
-### 1. Performance Benchmark Results
-The system demonstrates near-perfect linear scalability, with throughput increasing proportionally to the number of worker containers.
-
-| Workers | Throughput (tasks/s) | Avg Latency (ms) | Total Time (s) | Scaling Efficiency |
-|:--- |:--- |:--- |:--- |:--- |
-| 1 | 8.91 | 109,748 | 224.3 | 100.0% |
-| 2 | 17.66 | 53,944 | 113.1 | 99.1% |
-| 4 | 35.18 | 26,064 | 56.8 | 98.7% |
-| 8 | 68.58 | 12,320 | 29.2 | 96.2% |
-| 16 | 135.21 | 5,231 | 14.8 | 94.8% |
-
-### Visualizations
-<img src="logs/scale/throughput.png" width="450">
-<img src="logs/scale/latency.png" width="450">
-
-### 2. Key Insights
-* **Linear Throughput Growth**: The system achieved a **15.17x speedup** with 16 workers compared to a single worker. The transition from 1 to 2 workers (17.66 tasks/s) proves that the distribution logic is highly efficient with zero significant initial overhead.
-* **Latency Mitigation**: Increasing the worker count from 1 to 16 reduced the average task turnaround time by **95.2%**. This highlights the system's effectiveness at handling high-volume bursts.
-* **Stable Efficiency**: Even at 16 workers, the **Scaling Efficiency remained at ~95%**. This suggests that the Redis `BLMOVE` atomic operation successfully prevents "thundering herd" problems or lock contention at this scale.
-* **Resource Overhead**: Redis CPU usage remained negligible (<0.6%), indicating that the C++ workers are the primary consumers of resources and the system is successfully CPU-bound rather than I/O-bound.
 
 ---
 
